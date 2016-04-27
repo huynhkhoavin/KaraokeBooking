@@ -1,7 +1,10 @@
 package com.example.khoavin.karaokebooking;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.drm.DrmStore;
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.*;
@@ -26,16 +29,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView tv = (TextView)findViewById(R.id.textView);
-        Button bt = (Button)findViewById(R.id.button);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //new JSON_Task().execute("http://jsonparsing.parseapp.com/jsonData/moviesDemoItem.txt");
-                new POST_Request().execute("http://192.168.1.47:8080/TestPostMethod/index.php");
+//        Button bt = (Button)findViewById(R.id.button);
+//        bt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //new JSON_Task().execute("http://jsonparsing.parseapp.com/jsonData/moviesDemoItem.txt");
+//                new POST_Request().execute("http://192.168.1.47:8080/TestPostMethod/index.php");
+//            }
+//        });
+        Thread bamgio=new Thread(){
+            public void run() {
+                try {
+                    sleep(3000);
+                } catch (Exception e) {
+                } finally {
+                    Intent dangnhap = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(dangnhap);
+                }
             }
-        });
-    }
+        };
+        bamgio.start();
+}
     public class POST_Request extends AsyncTask<String, String, String>
     {
         ProgressDialog pDialog = new ProgressDialog(MainActivity.this);

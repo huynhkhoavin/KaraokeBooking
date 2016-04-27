@@ -4,29 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#00ffaa"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/karaoke_icon"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
-        android:layout_marginTop="76dp"
-        android:layout_marginRight="136dp"
-        android:layout_marginEnd="136dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:text="Thỏa mãn đam mê ca hát"
+        android:id="@+id/textView3"
+        android:layout_marginTop="87dp"
+        android:textSize="15dp"
+        android:textColor="#040404"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_marginTop="70dp"
-        android:layout_marginRight="113dp"
-        android:layout_marginEnd="113dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:text="Karaoke Booking"
+        android:id="@+id/textView4"
+        android:textSize="40dp"
+        android:textColor="#fb0000"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp" />
+
 </RelativeLayout>
