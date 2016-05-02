@@ -1,5 +1,6 @@
 package com.example.khoavin.karaokebooking;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +27,7 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
 
     Button btn_Login_Register;
     EditText txt_Username;
@@ -47,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 Login_Request postRequest = new Login_Request();
 
                 postRequest.setAction("login", Object_To_Json.convertToJson(new account(txt_Username.getText().toString(),txt_Password.getText().toString())));
-                postRequest.execute("http://192.168.1.47:8080/KaraokeWebService/login.php");
+                postRequest.execute("http://192.168.1.47/webservice/login.php");
             }
         });
     }
@@ -151,12 +152,14 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"Sai Email hoặc Mật Khẩu!",Toast.LENGTH_LONG).show();
                 }
+                break;
                 case "1":
                 {
                     Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
                     Intent it = new Intent(LoginActivity.this,HomeActivity.class);
                     startActivity(it);
                 }
+                break;
                 default:
                 {
 

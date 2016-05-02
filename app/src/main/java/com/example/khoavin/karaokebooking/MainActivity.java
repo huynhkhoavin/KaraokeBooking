@@ -1,5 +1,6 @@
 package com.example.khoavin.karaokebooking;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -21,7 +22,7 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Thread bamgio=new Thread(){
             public void run() {
                 try {
-                    sleep(5000);
+                    sleep(1000);
                 } catch (Exception e) {
                 } finally {
                     Intent dangnhap = new Intent(MainActivity.this, LoginActivity.class);
