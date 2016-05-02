@@ -1,6 +1,8 @@
 package com.example.khoavin.karaokebooking;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -25,6 +27,8 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Danh Sách Phòng");
+        setTitleColor(Color.BLACK);
         setContentView(R.layout.activity_home);
 
 

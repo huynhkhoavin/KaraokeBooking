@@ -3,10 +3,12 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/my_custom_background"
         android:onClick="roomClick"
         android:id="@+id/layout_room"
-        android:layout_height="80dp">
+        android:layout_height="70dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +38,7 @@
         android:text="Đang có sẵn"
         android:id="@+id/tv_Trang_Thai"
         android:textSize="15dp"
-        android:layout_below="@+id/tv_Gia_Tien"
+        android:layout_below="@+id/tv_Ten_Phong"
         android:layout_alignLeft="@+id/tv_Ten_Phong"
         android:layout_alignStart="@+id/tv_Ten_Phong" />
 
@@ -45,11 +47,13 @@
         android:layout_height="wrap_content"
         android:text="100$"
         android:id="@+id/tv_Gia_Tien"
-        android:layout_below="@+id/tv_Ten_Phong"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:textSize="20dp"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="26dp"
-        android:layout_marginEnd="26dp" />
+        android:textColor="#fab917" />
 
 
 </RelativeLayout>
