@@ -48,7 +48,7 @@ public class LoginActivity extends Activity {
                 Login_Request postRequest = new Login_Request();
 
                 postRequest.setAction("login", Object_To_Json.convertToJson(new account(txt_Username.getText().toString(),txt_Password.getText().toString())));
-                postRequest.execute("http://192.168.1.47/webservice/login.php");
+                postRequest.execute("http://192.168.1.47:8080/webservice/login.php");
             }
         });
     }
@@ -154,6 +154,13 @@ public class LoginActivity extends Activity {
                 }
                 break;
                 case "1":
+                {
+                    Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
+                    Intent it = new Intent(LoginActivity.this,HomeActivity.class);
+                    startActivity(it);
+                }
+                break;
+                case "2":
                 {
                     Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
                     Intent it = new Intent(LoginActivity.this,HomeActivity.class);

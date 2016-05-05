@@ -2,22 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
-            android:title="Import" />
+        <item android:id="@+id/nav_dsquan" android:icon="@android:drawable/ic_menu_camera"
+            android:title="Danh Sách Địa Điểm" />
+        <item android:id="@+id/nav_camara" android:icon="@android:drawable/stat_sys_headset"
+            android:title="Danh Sách Phòng" />
         <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Danh Sách Món" />
         <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Danh Sách Bài Hát" />
         <item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Tài Khoản" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Chuyển Phòng" />
             <item android:id="@+id/nav_send" android:icon="@android:drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Tin Nhắn" />
         </menu>
     </item>
 
