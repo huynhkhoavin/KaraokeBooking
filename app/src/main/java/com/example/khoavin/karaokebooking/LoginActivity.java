@@ -47,7 +47,7 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 Login_Request postRequest = new Login_Request();
                 postRequest.setAction("login", Object_To_Json.convertToJson(new account(txt_Username.getText().toString(),txt_Password.getText().toString())));
-                postRequest.execute("http://10.107.222.52:8080/webservice/login.php");
+                postRequest.execute("http://192.168.1.47:8080/webservice/login.php");
                  ////sdasdadasdasdasd
             }
         });

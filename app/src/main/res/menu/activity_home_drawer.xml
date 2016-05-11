@@ -3,13 +3,17 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Danh Sách Địa Điểm" />
         <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Danh Sách Phòng" />
         <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Danh Sách Món Ăn" />
         <item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Tìm Đường" />
+        <item android:id="@+id/nav_kara" android:icon="@android:drawable/ic_menu_manage"
+            android:title="Mã Số Karaoke" />
+        <item android:id="@+id/nav_qr" android:icon="@android:drawable/ic_menu_manage"
+            android:title="Mã QR Code"  />
     </group>
 
     <item android:title="Communicate">
