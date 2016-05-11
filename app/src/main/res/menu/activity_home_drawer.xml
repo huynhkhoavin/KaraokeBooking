@@ -2,24 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_dsquan" android:icon="@android:drawable/ic_menu_camera"
+        <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
             android:title="Danh Sách Địa Điểm" />
-        <item android:id="@+id/nav_camara" android:icon="@android:drawable/stat_sys_headset"
-            android:title="Danh Sách Phòng" />
         <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
-            android:title="Danh Sách Món" />
+            android:title="Danh Sách Phòng" />
         <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Danh Sách Bài Hát" />
+            android:title="Danh Sách Món Ăn" />
         <item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"
-            android:title="Tài Khoản" />
+            android:title="Tìm Đường" />
+        <item android:id="@+id/nav_kara" android:icon="@android:drawable/ic_menu_manage"
+            android:title="Mã Số Karaoke" />
+        <item android:id="@+id/nav_qr" android:icon="@android:drawable/ic_menu_manage"
+            android:title="Mã QR Code"  />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
-                android:title="Chuyển Phòng" />
+                android:title="Share" />
             <item android:id="@+id/nav_send" android:icon="@android:drawable/ic_menu_send"
-                android:title="Tin Nhắn" />
+                android:title="Send" />
         </menu>
     </item>
 
