@@ -1,10 +1,9 @@
 package com.example.khoavin.karaokebooking.KaraokeObject;
 
 import java.sql.Time;
-import java.util.Date;
 
 /**
- * Created by KhoaVin on 02/05/2016.
+ * Created by KhoaVin on 04/05/2016.
  */
 public class Phong_Dat {
     String PD_ID;
