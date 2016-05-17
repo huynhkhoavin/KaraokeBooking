@@ -41,7 +41,6 @@ public class SongInfo {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	
 	public String getSongInfo(){
 		return "\nMã số: " + songID + "\nVOL: " + vol +  "\nTên: " + songName + "\nLời: " + SongLyric + "\nNhạc sỹ: " + author;
 	}

@@ -29,9 +29,6 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setTitle("Danh Sách Phòng");
         setTitleColor(Color.BLACK);
-        setContentView(R.layout.activity_home);
-
-
         doFakeData();
         ListView listPD = (ListView) findViewById(R.id.listView);
         PD_Adapter pd_adapter = new PD_Adapter(HomeActivity.this,R.layout.item_phong,mList_PhongDat);

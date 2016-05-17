@@ -79,4 +79,11 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+    <string name="customer">Chọn Loại Khách Hàng</string>
+
+    <string-array name="user_kind">
+        <item>Khách Hàng</item>
+        <item>Người Điều Hành</item>
+    </string-array>
 </resources>

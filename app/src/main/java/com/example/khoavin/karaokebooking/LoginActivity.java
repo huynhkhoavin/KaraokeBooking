@@ -2,10 +2,8 @@ package com.example.khoavin.karaokebooking;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +27,8 @@ import java.util.regex.Pattern;
 
 public class LoginActivity extends Activity {
 
-    Button btn_Login_Register;
+    Button btn_Login;
+    Button btn_Register;
     EditText txt_Username;
     EditText txt_Password;
     ProgressDialog pDialog;
@@ -38,17 +37,25 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btn_Login_Register = (Button)findViewById(R.id.btn_Login_Register);
+        btn_Login = (Button)findViewById(R.id.btn_Login);
+        btn_Register = (Button)findViewById(R.id.btn_Register);
         txt_Username = (EditText)findViewById(R.id.txt_email);
         txt_Password = (EditText)findViewById(R.id.txt_pass);
 
-        btn_Login_Register.setOnClickListener(new View.OnClickListener() {
+        btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Login_Request postRequest = new Login_Request();
-                postRequest.setAction("login", Object_To_Json.convertToJson(new account(txt_Username.getText().toString(),txt_Password.getText().toString())));
+                postRequest.setAction("login", Object_To_Json.convertToJson(new account(txt_Username.getText().toString(), txt_Password.getText().toString())));
                 postRequest.execute("http://192.168.1.47:8080/webservice/login.php");
-                 ////sdasdadasdasdasd
+                ////sdasdadasdasdasd
+            }
+        });
+        btn_Register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(it);
             }
         });
     }
@@ -156,7 +163,7 @@ public class LoginActivity extends Activity {
                 case "1":
                 {
                     Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
-                    Intent it = new Intent(LoginActivity.this,HomeActivity.class);
+                    Intent it = new Intent(LoginActivity.this,KaraokeActivity.class);
                     startActivity(it);
                 }
                 break;

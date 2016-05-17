@@ -22,14 +22,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tìm Mã Số Bài Hát"
-        android:id="@+id/button"
+        android:id="@+id/btn_search_song"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/searchView" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView2"
-        android:layout_below="@+id/button"
+        android:id="@+id/lv_songs"
+        android:layout_below="@+id/btn_search_song"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

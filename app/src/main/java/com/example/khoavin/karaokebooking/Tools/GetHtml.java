@@ -31,8 +31,7 @@ public class GetHtml {
 			System.out.println(listSong.get(i).getSongInfo());
 		}
 	}
-
-	static ArrayList<SongInfo> getSonginformation(String h_url) {
+	public static ArrayList<SongInfo> getSonginformation(String h_url) {
 		String FilterString = "";
 		listSong.clear();
 		try {
