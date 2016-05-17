@@ -163,7 +163,7 @@ public class LoginActivity extends Activity {
                 case "1":
                 {
                     Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
-                    Intent it = new Intent(LoginActivity.this,KaraokeActivity.class);
+                    Intent it = new Intent(LoginActivity.this,HomeActivity.class);
                     startActivity(it);
                 }
                 break;

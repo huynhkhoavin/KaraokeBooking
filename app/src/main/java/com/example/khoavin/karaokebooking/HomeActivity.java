@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.khoavin.karaokebooking.Adapter.PD_Adapter;
@@ -24,13 +25,16 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ArrayList<Phong_Dat> mList_PhongDat = new ArrayList<Phong_Dat>();
+    ListView listPD;
+    Button btn_4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
         setTitle("Danh Sách Phòng");
         setTitleColor(Color.BLACK);
         doFakeData();
-        ListView listPD = (ListView) findViewById(R.id.listView);
+        listPD = (ListView)findViewById(R.id.lv_room);
         PD_Adapter pd_adapter = new PD_Adapter(HomeActivity.this,R.layout.item_phong,mList_PhongDat);
         listPD.setAdapter(pd_adapter);
 
