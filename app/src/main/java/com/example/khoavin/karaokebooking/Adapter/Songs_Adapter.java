@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 import com.example.khoavin.karaokebooking.R;
@@ -40,23 +41,19 @@ public class Songs_Adapter extends ArrayAdapter<SongInfo> {
             viewHoder = new ViewHoder();
             viewHoder.tv_ma_so = (TextView) rowView.findViewById(R.id.tv_maso);
             viewHoder.tv_ten_bh = (TextView) rowView.findViewById(R.id.tv_ten_bai_hat);
-            viewHoder.tv_loi_bh = (TextView) rowView.findViewById(R.id.tv_loi_bh);
             viewHoder.layout_songs = (RelativeLayout) rowView.findViewById(R.id.layout_songs);
             rowView.setTag(viewHoder);
         }
         else{
             viewHoder = (ViewHoder)convertView.getTag();
         }
-        SongInfo songs = mList_Songs.get(position);
+        final SongInfo songs = mList_Songs.get(position);
         viewHoder.tv_ma_so.setText(songs.getSongID());
         viewHoder.tv_ten_bh.setText(songs.getSongName());
-        viewHoder.tv_loi_bh.setText(songs.getSongLyric());
         viewHoder.layout_songs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent it = new Intent(mContext, RoomDetailActivity.class);
-//                it.putExtra("room_id", String.valueOf(position+1));
-//                mContext.startActivity(it);
+                Toast.makeText(mContext, (CharSequence) songs.getSongLyric(),Toast.LENGTH_LONG).show();
 
             }
         });
@@ -65,7 +62,6 @@ public class Songs_Adapter extends ArrayAdapter<SongInfo> {
     static class ViewHoder{
         TextView tv_ma_so;
         TextView tv_ten_bh;
-        TextView tv_loi_bh;
         RelativeLayout layout_songs;
     }
 }
