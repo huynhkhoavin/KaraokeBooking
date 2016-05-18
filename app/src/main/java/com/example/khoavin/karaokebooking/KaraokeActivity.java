@@ -37,8 +37,8 @@ public class KaraokeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 GetSong getsong = new GetSong();
-                String url = "http://chonbaihat.com/tim-kiem?utf8=%E2%9C%93&query=nang+am+xa+dan&button=";
-                getsong.execute(url);
+                //String url = "http://chonbaihat.com/tim-kiem?utf8=%E2%9C%93&query=nang+am+xa+dan&button=";
+                getsong.execute(GetHtml.changeNameToUrl(sv.getQuery().toString()));
             }
         });
     }
@@ -46,8 +46,8 @@ public class KaraokeActivity extends Activity {
     {
         @Override
         protected String doInBackground(String... params) {
-            GetHtml getHtml = new GetHtml();
-            ArrayList<SongInfo> arr = new ArrayList<SongInfo>(getHtml.getSonginformation(params[0]));
+            //GetHtml getHtml = new GetHtml();
+            ArrayList<SongInfo> arr = new ArrayList<SongInfo>(GetHtml.getSonginformation(params[0]));
             songs_adapter = new Songs_Adapter(KaraokeActivity.this,R.layout.item_phong,arr);
             return null;
         }
