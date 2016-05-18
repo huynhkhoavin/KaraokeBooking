@@ -2,16 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
+        <item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_camera"
+            android:title="Quản Lý" />
+        <item android:id="@+id/nav_diadiem" android:icon="@android:drawable/ic_menu_camera"
             android:title="Danh Sách Địa Điểm" />
-        <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
+        <item android:id="@+id/nav_rooms" android:icon="@android:drawable/ic_menu_gallery"
             android:title="Danh Sách Phòng" />
-        <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
+        <item android:id="@+id/nav_foods" android:icon="@android:drawable/ic_menu_slideshow"
             android:title="Danh Sách Món Ăn" />
-        <item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"
+        <item android:id="@+id/nav_maps" android:icon="@android:drawable/ic_menu_manage"
             android:title="Tìm Đường" />
         <item android:id="@+id/nav_kara" android:icon="@android:drawable/ic_menu_manage"
-            android:title="Mã Số Karaoke" />
+            android:title="Mã Số Karaoke"/>
         <item android:id="@+id/nav_qr" android:icon="@android:drawable/ic_menu_manage"
             android:title="Mã QR Code"  />
     </group>
