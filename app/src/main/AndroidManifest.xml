@@ -34,7 +34,16 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".ManagerActivity"></activity>
+        <activity android:name=".ManagerActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.khoavin.karaokebooking.HomeActivity"/>
+        </activity>
+
+        <activity
+            android:name=".ManagementActivity"
+            android:label="@string/title_activity_management"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

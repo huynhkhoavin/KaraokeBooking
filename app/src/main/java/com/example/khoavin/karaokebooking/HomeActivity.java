@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.provider.SyncStateContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,6 +26,8 @@ import com.example.khoavin.karaokebooking.Adapter.PD_Adapter;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 
 import java.util.ArrayList;
+
+import layout.Fragment.BlankFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -153,6 +158,9 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        BlankFragment fragment = new BlankFragment();
         int id = item.getItemId();
         if(id == R.id.nav_manage){
             Intent it = new Intent(HomeActivity.this, ManagerActivity.class);

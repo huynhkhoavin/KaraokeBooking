@@ -86,4 +86,8 @@
         <item>Khách Hàng</item>
         <item>Người Điều Hành</item>
     </string-array>
+    <string name="title_activity_management">ManagementActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

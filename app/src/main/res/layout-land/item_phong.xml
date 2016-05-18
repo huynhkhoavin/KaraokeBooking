@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/my_custom_background"
+        android:onClick="roomClick"
+        android:id="@+id/layout_room"
+        android:layout_height="70dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Phong 1"
+            android:id="@+id/tv_Ten_Phong"
+            android:textSize="30dp"
+            android:textColor="#4afa6d"
+            android:layout_alignTop="@+id/img_status"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/room_available"
+            android:id="@+id/img_status"
+            android:adjustViewBounds="true"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đang có sẵn"
+        android:id="@+id/tv_Trang_Thai"
+        android:textSize="15dp"
+        android:layout_below="@+id/tv_Ten_Phong"
+        android:layout_alignLeft="@+id/tv_Ten_Phong"
+        android:layout_alignStart="@+id/tv_Ten_Phong" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100$"
+        android:id="@+id/tv_Gia_Tien"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:textSize="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#fab917" />
+
+
+</RelativeLayout>
+
