@@ -176,7 +176,8 @@ public class HomeActivity extends AppCompatActivity
             Intent it = new Intent(HomeActivity.this, KaraokeActivity.class);
             startActivity(it);
         } else if (id == R.id.nav_qr) {
-
+            Intent it = new Intent(HomeActivity.this, QRScanningActivity.class);
+            startActivity(it);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
