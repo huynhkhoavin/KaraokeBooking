@@ -8,6 +8,23 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <permission
+        android:name="waleedsarwar.com.mapdemo.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="waleedsarwar.com.mapdemo.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,6 +47,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RoomDetailActivity" />
         <activity android:name=".KaraokeActivity" />
+        <activity android:name=".MapActivity"/>
+
+
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
@@ -44,6 +64,13 @@
             android:name=".ManagementActivity"
             android:label="@string/title_activity_management"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAfXfwE4ijSy2ryODwD0uSSLu5Q1zevlNA" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
