@@ -63,6 +63,8 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     private void doFakeData()
@@ -176,8 +178,8 @@ public class HomeActivity extends AppCompatActivity
             Intent it = new Intent(HomeActivity.this, KaraokeActivity.class);
             startActivity(it);
         } else if (id == R.id.nav_qr) {
-            Intent it = new Intent(HomeActivity.this, QRScanningActivity.class);
-            startActivity(it);
+            Intent intent = new Intent(this, QrScannerActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
