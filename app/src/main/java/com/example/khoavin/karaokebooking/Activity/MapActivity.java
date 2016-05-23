@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking;
+package com.example.khoavin.karaokebooking.Activity;
 
 /**
  * Created by OatOal on 5/20/2016.
@@ -17,6 +17,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.BranchArrayList;
 import com.example.khoavin.karaokebooking.Tools.DirectionsJSONParser;
 import com.google.android.gms.maps.CameraUpdateFactory;

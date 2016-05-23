@@ -1,10 +1,12 @@
-package com.example.khoavin.karaokebooking;
+package com.example.khoavin.karaokebooking.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.khoavin.karaokebooking.R;
 
 public class RoomDetailActivity extends Activity {
 

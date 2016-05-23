@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking;
+package com.example.khoavin.karaokebooking.Activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 
 import com.example.khoavin.karaokebooking.KaraokeObject.account;
+import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.Object_To_Json;
 
 import java.io.BufferedReader;
@@ -47,7 +48,7 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 Login_Request postRequest = new Login_Request();
                 postRequest.setAction("login", Object_To_Json.convertToJson(new account(txt_Username.getText().toString(), txt_Password.getText().toString())));
-                postRequest.execute("http://10.0.5.49:80/webservice/login.php");
+                postRequest.execute("http://192.168.1.48:8080/webservice/login.php");
                 ////sdasdadasdasdasd
             }
         });
@@ -155,6 +156,11 @@ public class LoginActivity extends Activity {
             pDialog.dismiss();
             switch (result)
             {
+                case "Using":
+                {
+                    Toast.makeText(getApplicationContext(),"Tài Khoản Hiện Đang Đăng Nhập Ở Một Nơi Khác!",Toast.LENGTH_LONG).show();
+                }
+                break;
                 case "0":
                 {
                     Toast.makeText(getApplicationContext(),"Sai Email hoặc Mật Khẩu!",Toast.LENGTH_LONG).show();
@@ -163,10 +169,22 @@ public class LoginActivity extends Activity {
                 case "1":
                 {
                     Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
-                    Intent it = new Intent(LoginActivity.this,HomeActivity.class);
+                    Intent it = new Intent(LoginActivity.this,HomeClientActivity.class);
                     startActivity(it);
                 }
                 break;
+                case "3": //Admin authority
+                {
+                    Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công Với Quyền Quản Trị!",Toast.LENGTH_LONG).show();
+                    Intent it = new Intent(LoginActivity.this,HomeManagerActivity.class);
+                    startActivity(it);
+                }break;
+                case "4":
+                {
+                    Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
+                    Intent it = new Intent(LoginActivity.this,HomeClientActivity.class);
+                    startActivity(it);
+                }
                 default:
                 {
 

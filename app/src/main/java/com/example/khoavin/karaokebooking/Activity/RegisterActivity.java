@@ -1,10 +1,12 @@
-package com.example.khoavin.karaokebooking;
+package com.example.khoavin.karaokebooking.Activity;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.example.khoavin.karaokebooking.R;
 
 public class RegisterActivity extends Activity {
     private String[]arraySpinner;

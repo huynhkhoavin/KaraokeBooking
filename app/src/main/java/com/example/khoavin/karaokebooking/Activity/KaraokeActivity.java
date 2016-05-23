@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking;
+package com.example.khoavin.karaokebooking.Activity;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -10,6 +10,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.khoavin.karaokebooking.Adapter.Songs_Adapter;
+import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.GetHtml;
 import com.example.khoavin.karaokebooking.Tools.SongInfo;
 

@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking;
+package com.example.khoavin.karaokebooking.Activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

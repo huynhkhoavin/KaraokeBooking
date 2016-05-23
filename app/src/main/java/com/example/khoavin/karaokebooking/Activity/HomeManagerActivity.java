@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking;
+package com.example.khoavin.karaokebooking.Activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,12 +21,13 @@ import android.widget.ListView;
 
 import com.example.khoavin.karaokebooking.Adapter.PD_Adapter;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
+import com.example.khoavin.karaokebooking.R;
 
 import java.util.ArrayList;
 
 import layout.Fragment.BlankFragment;
 
-public class HomeActivity extends AppCompatActivity
+public class HomeManagerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ArrayList<Phong_Dat> mList_PhongDat = new ArrayList<Phong_Dat>();
     ListView listPD;
@@ -34,12 +35,12 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home_manager);
         setTitle("Danh Sách Phòng");
         setTitleColor(Color.BLACK);
         doFakeData();
         listPD = (ListView)findViewById(R.id.lv_room);
-        PD_Adapter pd_adapter = new PD_Adapter(HomeActivity.this,R.layout.item_phong,mList_PhongDat);
+        PD_Adapter pd_adapter = new PD_Adapter(HomeManagerActivity.this,R.layout.item_phong,mList_PhongDat);
         listPD.setAdapter(pd_adapter);
 
 
@@ -162,7 +163,7 @@ public class HomeActivity extends AppCompatActivity
         BlankFragment fragment = new BlankFragment();
         int id = item.getItemId();
         if(id == R.id.nav_manage){
-            Intent it = new Intent(HomeActivity.this, ManagerActivity.class);
+            Intent it = new Intent(HomeManagerActivity.this, ManagerActivity.class);
             startActivity(it);
         }
         else if (id == R.id.nav_diadiem) {
@@ -172,10 +173,10 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_foods) {
 
         } else if (id == R.id.nav_maps) {
-            Intent it = new Intent(HomeActivity.this, MapActivity.class);
+            Intent it = new Intent(HomeManagerActivity.this, MapActivity.class);
             startActivity(it);
         } else if (id == R.id.nav_kara) {
-            Intent it = new Intent(HomeActivity.this, KaraokeActivity.class);
+            Intent it = new Intent(HomeManagerActivity.this, KaraokeActivity.class);
             startActivity(it);
         } else if (id == R.id.nav_qr) {
             Intent intent = new Intent(this, QrScannerActivity.class);

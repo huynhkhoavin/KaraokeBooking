@@ -10,10 +10,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.khoavin.karaokebooking.HomeActivity;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 import com.example.khoavin.karaokebooking.R;
-import com.example.khoavin.karaokebooking.RoomDetailActivity;
+import com.example.khoavin.karaokebooking.Activity.RoomDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;

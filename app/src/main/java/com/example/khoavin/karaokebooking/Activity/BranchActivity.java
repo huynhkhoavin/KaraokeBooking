@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking;
+package com.example.khoavin.karaokebooking.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.widget.ListView;
 
 import com.example.khoavin.karaokebooking.Adapter.Branch_Adapter;
 import com.example.khoavin.karaokebooking.KaraokeObject.BranchLocation;
+import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.BranchArrayList;
 
 import java.util.ArrayList;

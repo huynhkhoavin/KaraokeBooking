@@ -9,7 +9,7 @@
     android:textColor="#00ffaa"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior" tools:showIn="@layout/app_bar_home"
-    tools:context="com.example.khoavin.karaokebooking.HomeActivity">
+    tools:context=".Activity.HomeManagerActivity">
 
     <ListView
         android:layout_width="wrap_content"

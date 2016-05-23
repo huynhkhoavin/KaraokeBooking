@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Activity.ManagementActivity">
+    tools:context="com.example.khoavin.karaokebooking.Activity.HomeClientActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_management" />
+    <include layout="@layout/content_home_client" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
