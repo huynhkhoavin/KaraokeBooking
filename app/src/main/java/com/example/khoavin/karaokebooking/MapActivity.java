@@ -4,6 +4,7 @@ package com.example.khoavin.karaokebooking;
  * Created by OatOal on 5/20/2016.
  */
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,10 +13,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.khoavin.karaokebooking.Tools.BranchArrayList;
 import com.example.khoavin.karaokebooking.Tools.DirectionsJSONParser;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -62,6 +64,7 @@ public class MapActivity extends FragmentActivity {
         // Enable MyLocation Button in the Map
         map.setMyLocationEnabled(true);
 
+
         /*map.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
             @Override
             public void onMyLocationChange(Location location) {
@@ -73,13 +76,7 @@ public class MapActivity extends FragmentActivity {
                 }
             }
         });
-
-        map.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
-            @Override
-            public boolean onMyLocationButtonClick() {
-                return false;
-            }
-        });*/
+       ;*/
 
         map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 
@@ -128,16 +125,24 @@ public class MapActivity extends FragmentActivity {
                 }
             }
         });
+        BranchArrayList.init(10.881680, 106.782909);
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(10.952266, 106.810035))
                 .title("Hello world"));
 
-        //map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(10.952266, 106.810035), 10));
     }
     public void onSearch(View view)
     {
-        EditText location_tf = (EditText)findViewById(R.id.txt_search);
-        String location = location_tf.getText().toString();
+        SearchView location_tf = (SearchView)findViewById(R.id.txt_search);
+        String location = location_tf.getQuery().toString();
+        if(location.equals(""))
+        {
+            //move to new intent
+            //Toast.makeText(getBaseContext(), "please enter address to search!", Toast.LENGTH_LONG).show();
+            Intent branchIntent = new Intent(this, BranchActivity.class);
+            startActivity(branchIntent);
+            return;
+        }
         List<Address> addressList = null;
         if(location != null || !location.equals(""))
         {
@@ -153,7 +158,6 @@ public class MapActivity extends FragmentActivity {
             Address address = addressList.get(0);
             LatLng latLng = new LatLng(address.getLatitude() , address.getLongitude());
             map.addMarker(new MarkerOptions().position(latLng).title("Marker"));
-            // map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
         }
     }

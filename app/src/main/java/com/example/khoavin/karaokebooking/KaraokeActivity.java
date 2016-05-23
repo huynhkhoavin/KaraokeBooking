@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.khoavin.karaokebooking.Adapter.Songs_Adapter;
 import com.example.khoavin.karaokebooking.Tools.GetHtml;
@@ -36,9 +36,12 @@ public class KaraokeActivity extends Activity {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GetSong getsong = new GetSong();
-                //String url = "http://chonbaihat.com/tim-kiem?utf8=%E2%9C%93&query=nang+am+xa+dan&button=";
-                getsong.execute(GetHtml.changeNameToUrl(sv.getQuery().toString()));
+                if(sv.getQuery().toString().equals("")){
+                    Toast.makeText(getBaseContext(), "Please enter song name to search!", Toast.LENGTH_LONG).show();
+                }else{
+                    GetSong getsong = new GetSong();
+                    getsong.execute(GetHtml.changeNameToUrl(sv.getQuery().toString()));
+                }
             }
         });
     }

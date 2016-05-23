@@ -1,19 +1,15 @@
 package com.example.khoavin.karaokebooking.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 import com.example.khoavin.karaokebooking.R;
-import com.example.khoavin.karaokebooking.RoomDetailActivity;
 import com.example.khoavin.karaokebooking.Tools.SongInfo;
 
 import java.util.ArrayList;
@@ -39,8 +35,8 @@ public class Songs_Adapter extends ArrayAdapter<SongInfo> {
             LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             rowView = inflater.inflate(R.layout.item_songs, null);
             viewHoder = new ViewHoder();
-            viewHoder.tv_ma_so = (TextView) rowView.findViewById(R.id.tv_maso);
-            viewHoder.tv_ten_bh = (TextView) rowView.findViewById(R.id.tv_ten_bai_hat);
+            viewHoder.tv_ma_so = (TextView) rowView.findViewById(R.id.tv_branchname);
+            viewHoder.tv_ten_bh = (TextView) rowView.findViewById(R.id.tv_address);
             viewHoder.layout_songs = (RelativeLayout) rowView.findViewById(R.id.layout_songs);
             rowView.setTag(viewHoder);
         }

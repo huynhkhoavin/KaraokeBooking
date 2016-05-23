@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/my_custom_background"
+    android:onClick="roomClick"
+    android:id="@+id/layout_branchs"
+    android:layout_height="120dp">
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="290dp"
+        android:layout_height="35dp"
+        android:text="231 - Adolf Hiler - Đông Hòa - Dĩ An - Bình Dương"
+        android:id="@+id/tv_address"
+        android:textSize="15dp"
+        android:textColor="#4a7cfa"
+        android:gravity="center_vertical"
+        android:layout_alignRight="@+id/tv_branchname"
+        android:layout_alignEnd="@+id/tv_branchname"
+        android:layout_below="@+id/tv_branchname"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="LÀNG ĐẠI HỌC"
+        android:id="@+id/tv_branchname"
+        android:textSize="25dp"
+        android:textColor="#fa564a"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Khoản cách"
+        android:id="@+id/textView5"
+        android:textSize="15dp"
+        android:layout_below="@+id/tv_address"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/tv_distamce"
+        android:layout_toStartOf="@+id/tv_distamce" />
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="15KM"
+        android:id="@+id/tv_distamce"
+        android:textSize="15dp"
+        android:layout_below="@+id/tv_address"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Thời gian"
+        android:id="@+id/textView7"
+        android:textSize="15dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="15 phút"
+        android:id="@+id/tv_time"
+        android:textSize="15dp"
+        android:layout_alignTop="@+id/textView7"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
+
