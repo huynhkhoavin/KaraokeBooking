@@ -35,8 +35,8 @@ public class Songs_Adapter extends ArrayAdapter<SongInfo> {
             LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             rowView = inflater.inflate(R.layout.item_songs, null);
             viewHoder = new ViewHoder();
-            viewHoder.tv_ma_so = (TextView) rowView.findViewById(R.id.tv_branchname);
-            viewHoder.tv_ten_bh = (TextView) rowView.findViewById(R.id.tv_address);
+            viewHoder.tv_ma_so = (TextView) rowView.findViewById(R.id.tv_maso);
+            viewHoder.tv_ten_bh = (TextView) rowView.findViewById(R.id.tv_ten_bai_hat);
             viewHoder.layout_songs = (RelativeLayout) rowView.findViewById(R.id.layout_songs);
             rowView.setTag(viewHoder);
         }
