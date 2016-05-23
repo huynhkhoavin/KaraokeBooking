@@ -13,11 +13,11 @@
         android:layout_width="290dp"
         android:layout_height="60dp"
         android:text="Nắng Ấm Xa Dần"
-        android:id="@+id/tv_address"
+        android:id="@+id/tv_ten_bai_hat"
         android:textSize="20dp"
         android:textColor="#4a7cfa"
         android:layout_marginLeft="100dp"
-        android:layout_alignTop="@+id/tv_branchname"
+        android:layout_alignTop="@+id/tv_maso"
         android:gravity="center_vertical"
         />
 
@@ -26,7 +26,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="123456"
-        android:id="@+id/tv_branchname"
+        android:id="@+id/tv_maso"
         android:textSize="20dp"
         android:textColor="#fa564a"
         android:layout_marginLeft="17dp"
