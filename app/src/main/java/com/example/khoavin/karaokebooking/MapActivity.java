@@ -50,7 +50,6 @@ public class MapActivity extends FragmentActivity {
 
         tvDistanceDuration = (TextView) findViewById(R.id.tv_distance_time);
         tvDistanceDuration.setText("Long touch to set Start point!");
-        //Toast.makeText(getApplicationContext(), "Long touch to select Start point!", Toast.LENGTH_SHORT).show();
         // Initializing
         markerPoints = new ArrayList<LatLng>();
 
@@ -62,6 +61,25 @@ public class MapActivity extends FragmentActivity {
 
         // Enable MyLocation Button in the Map
         map.setMyLocationEnabled(true);
+
+        /*map.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+            @Override
+            public void onMyLocationChange(Location location) {
+
+                LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+                map.addMarker(new MarkerOptions().position(loc));
+                if (map != null) {
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
+                }
+            }
+        });
+
+        map.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+            @Override
+            public boolean onMyLocationButtonClick() {
+                return false;
+            }
+        });*/
 
         map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 
@@ -110,12 +128,11 @@ public class MapActivity extends FragmentActivity {
                 }
             }
         });
-        map.setMyLocationEnabled(true);
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(10.952266, 106.810035))
                 .title("Hello world"));
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(10.952266, 106.810035), 10));
+        //map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(10.952266, 106.810035), 10));
     }
     public void onSearch(View view)
     {
@@ -303,7 +320,7 @@ public class MapActivity extends FragmentActivity {
 
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
-                lineOptions.width(2);
+                lineOptions.width(5);
                 lineOptions.color(Color.RED);
             }
 
