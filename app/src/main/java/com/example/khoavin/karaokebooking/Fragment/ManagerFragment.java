@@ -1,12 +1,10 @@
-package com.example.khoavin.karaokebooking.Activity;
+package com.example.khoavin.karaokebooking.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,21 +12,38 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.khoavin.karaokebooking.KaraokeObject.account;
 import com.example.khoavin.karaokebooking.R;
+import com.example.khoavin.karaokebooking.Tools.Object_To_Json;
+import com.example.khoavin.karaokebooking.Tools.ReadJson;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManagerActivity extends ActionBarActivity {
+/**
+ * Created by KhoaVin on 25/05/2016.
+ */
+public class ManagerFragment extends Fragment {
     GridView gridView;
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manager);
-        gridView = (GridView) findViewById(R.id.gv_manager);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View fragmentViews = inflater.inflate(R.layout.activity_manager,container,false);
 
-        gridView.setAdapter(new MyAdapter(this));
+        gridView = (GridView)fragmentViews.findViewById(R.id.gv_manager);
+        gridView.setAdapter(new MyAdapter(getActivity()));
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new ReadJson() {
+                    @Override
+                    public int doSomeThing(String x) {
+                        return 0;
+                    }
+                }.execute("http://192.168.1.48:8080/webservice/management.php?action=load_room&data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
+            }
+        });
+        return fragmentViews;
     }
     private class MyAdapter extends BaseAdapter
     {
@@ -99,30 +114,5 @@ public class ManagerActivity extends ActionBarActivity {
                 this.drawableId = drawableId;
             }
         }
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.mnCheck) {
-            return true;
-        }
-        else if(id == android.R.id.home){
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

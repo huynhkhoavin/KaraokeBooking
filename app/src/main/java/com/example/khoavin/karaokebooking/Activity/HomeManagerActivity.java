@@ -1,11 +1,8 @@
 package com.example.khoavin.karaokebooking.Activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -15,17 +12,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.khoavin.karaokebooking.Adapter.PD_Adapter;
+import com.example.khoavin.karaokebooking.Activity.Manager.RoomActivity;
+import com.example.khoavin.karaokebooking.Fragment.ManagerFragment;
+import com.example.khoavin.karaokebooking.Fragment.RoomsFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 import com.example.khoavin.karaokebooking.R;
 
 import java.util.ArrayList;
-
-import layout.Fragment.BlankFragment;
 
 public class HomeManagerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,25 +32,15 @@ public class HomeManagerActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_manager);
-        setTitle("Danh Sách Phòng");
-        setTitleColor(Color.BLACK);
-        doFakeData();
-        listPD = (ListView)findViewById(R.id.lv_room);
-        PD_Adapter pd_adapter = new PD_Adapter(HomeManagerActivity.this,R.layout.item_phong,mList_PhongDat);
-        listPD.setAdapter(pd_adapter);
-
+        ManagerFragment fragment = new ManagerFragment();
+        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction()
+                .replace(R.id.fl_content, fragment)
+                .commit();
+        setTitle(" ");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Thêm một phòng mới", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,7 +50,6 @@ public class HomeManagerActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
     }
 
@@ -160,18 +145,29 @@ public class HomeManagerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        BlankFragment fragment = new BlankFragment();
         int id = item.getItemId();
         if(id == R.id.nav_manage){
             Intent it = new Intent(HomeManagerActivity.this, ManagerActivity.class);
             startActivity(it);
         }
         else if (id == R.id.nav_diadiem) {
-            // Handle the camera action
+            RoomsFragment fragment = new RoomsFragment();
+            android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction()
+                    .replace(R.id.fl_content, fragment)
+                    .commit();
+
         } else if (id == R.id.nav_rooms) {
+            ManagerFragment fragment = new ManagerFragment();
+            android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction()
+                    .replace(R.id.fl_content, fragment)
+                    .commit();
 
         } else if (id == R.id.nav_foods) {
 
+            Intent it = new Intent(HomeManagerActivity.this, RoomActivity.class);
+            startActivity(it);
         } else if (id == R.id.nav_maps) {
             Intent it = new Intent(HomeManagerActivity.this, MapActivity.class);
             startActivity(it);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -8,12 +8,19 @@
     android:background="#8f8d8d"
     android:textColor="#00ffaa"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:id="@+id/rl_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior" tools:showIn="@layout/app_bar_home"
     tools:context=".Activity.HomeManagerActivity">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lv_room"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <!--<ListView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/lv_room"-->
+        <!--android:layout_centerHorizontal="true" />-->
+    <!--<fragment-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:name="com.example.khoavin.karaokebooking.Fragment.RoomsFragment"-->
+        <!--tools:layout="@layout/fragment_room"-->
+        <!--android:id="@+id/frgRoom"></fragment>-->
+</FrameLayout>

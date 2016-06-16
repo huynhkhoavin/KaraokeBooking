@@ -25,10 +25,6 @@ public abstract class WebConnect extends AsyncTask<String, String, String>
     String parameterString;
     String result = "";
     public ProgressDialog pDialog;
-    public WebConnect()
-    {
-        Init();
-    }
     public void setURL(String u){
         try {
             url = new URL(u);
@@ -119,5 +115,4 @@ public abstract class WebConnect extends AsyncTask<String, String, String>
     }
     public abstract void  postExecuted(String s);
     public abstract void preDoing();
-    public abstract void Init();
 }

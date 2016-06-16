@@ -10,7 +10,13 @@ public class Phong_Dat {
     String PD_TEN_PHONG;
     int PD_LOAI_PHONG;
     int PD_TRANG_THAI;
-
+    public Phong_Dat()
+    {}
+    public Phong_Dat(String id, String ten)
+    {
+        this.PD_ID = id;
+        this.PD_TEN_PHONG = ten;
+    }
     public String getPD_Status() {
         return PD_Status;
     }
@@ -18,7 +24,6 @@ public class Phong_Dat {
     public void setPD_Status(String PD_Status) {
         this.PD_Status = PD_Status;
     }
-
     String PD_Status;
     int PD_GIA_TIEN;
 
