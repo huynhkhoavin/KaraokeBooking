@@ -1,5 +1,6 @@
 package com.example.khoavin.karaokebooking.Tools;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -16,17 +17,25 @@ import java.util.regex.Pattern;
 /**
  * Created by KhoaVin on 27/05/2016.
  */
-public class WebConnect extends AsyncTask<String, String, String>
+public abstract class WebConnect extends AsyncTask<String, String, String>
 {
     HttpURLConnection connection = null;
     URL url;
     String action;
     String parameterString;
     String result = "";
-    public void setURL(String u) throws MalformedURLException {
-        url = new URL(u);
+    public ProgressDialog pDialog;
+    public WebConnect()
+    {
+        Init();
     }
-
+    public void setURL(String u){
+        try {
+            url = new URL(u);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
     public String getResult()
     {
         return result;
@@ -38,6 +47,7 @@ public class WebConnect extends AsyncTask<String, String, String>
     }
     @Override
     protected void onPreExecute() {
+        preDoing();
         super.onPreExecute();
     }
     @Override
@@ -50,6 +60,7 @@ public class WebConnect extends AsyncTask<String, String, String>
         connection = null;
         BufferedReader reader = null;
         StringBuffer buffer = null;
+
         try {
             URL url = new URL(u);
             connection = (HttpURLConnection)url.openConnection();
@@ -86,11 +97,11 @@ public class WebConnect extends AsyncTask<String, String, String>
                 e.printStackTrace();
             }
         }
-        return null;
+        return u;
     }
     private final Pattern REMOVE_TAGS = Pattern.compile("<.+?>");
 
-    public String removeTags(String string) {
+    public String getResult(String string) {
         if (string == null || string.length() == 0) {
             return string;
         }
@@ -101,32 +112,12 @@ public class WebConnect extends AsyncTask<String, String, String>
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        result = removeTags(s);
-        System.out.println("Kết quả là:" + result);
-        switch (result)
-        {
-            case "Using":
-            {
-            }
-            break;
-            case "0":
-            {
-            }
-            break;
-            case "1":
-            {
-            }
-            break;
-            case "3": //Admin authority
-            {
-            }break;
-            case "4":
-            {
-            }
-            default:
-            {
 
-            }
-        }
+        result = getResult(s);
+        postExecuted(result);
+        System.out.println("Kết quả là:" + result);
     }
+    public abstract void  postExecuted(String s);
+    public abstract void preDoing();
+    public abstract void Init();
 }
