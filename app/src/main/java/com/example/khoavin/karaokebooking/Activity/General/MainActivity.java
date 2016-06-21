@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
             }
         };
         webConnect.setAction("get_free_room","sss");
-        webConnect.execute("http://192.168.1.47:8888/webservice/book.php");
+        webConnect.execute("http://192.168.1.43:80/webservice/book.php");
         Thread bamgio=new Thread(){
             public void run() {
                 try {

@@ -94,4 +94,5 @@
     <string name="title_activity_room">RoomActivity</string>
     <string name="title_activity_service">ServiceActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="autocomplete_hint">Search a Place</string>
 </resources>

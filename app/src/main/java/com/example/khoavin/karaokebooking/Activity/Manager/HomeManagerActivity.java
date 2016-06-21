@@ -114,7 +114,7 @@ public class HomeManagerActivity extends AppCompatActivity
             startActivity(it);
         } else if (id == R.id.nav_kara) {
             Intent it = new Intent(HomeManagerActivity.this, KaraokeActivity.class);
-            startActivity(it);
+           startActivity(it);
         } else if (id == R.id.nav_qr) {
             Intent intent = new Intent(this, QrScannerActivity.class);
             startActivity(intent);

@@ -31,7 +31,7 @@ public class RoomsFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                readJson.execute("http://192.168.1.47:8888/webservice/management.php?action=load_room" + "?data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
+                readJson.execute("http://192.168.1.43:80/webservice/management.php?action=load_room" + "?data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
             }
         });
 

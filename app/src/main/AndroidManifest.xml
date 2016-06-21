@@ -20,6 +20,7 @@
     <uses-permission android:name="com.example.khoavin.karaokebooking.permission.MAPS_RECEIVE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -49,13 +50,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity.Manager.RoomDetailActivity" />
         <activity android:name=".Activity.Client.KaraokeActivity" />
-        <activity android:name=".Activity.General.MapActivity" />
         <activity android:name=".Activity.General.QrScannerActivity" />
         <activity android:name=".Activity.General.BranchActivity" />
         <activity
             android:name=".Activity.General.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".Activity.General.RegisterActivity" />
+        <activity android:name=".Activity.General.MapActivity"/>
         <activity android:name=".Activity.Manager.ManagerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -64,7 +65,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAfXfwE4ijSy2ryODwD0uSSLu5Q1zevlNA" />
+            android:value="AIzaSyBtuvyaH8IPhNS0xk4v--s4LswR7Z1-oVI" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

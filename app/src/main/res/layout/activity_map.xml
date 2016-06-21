@@ -6,8 +6,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activity.General.MainActivity">
+    tools:context=".Activity.General.MapActivity">
 
+    <TextView
+        android:id="@+id/tv_distance_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distance and Time"
+        android:layout_below="@+id/autocomplete_places"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/autocomplete_places"
+        android:layout_alignEnd="@+id/autocomplete_places" />
 
     <fragment
         android:id="@+id/map"
@@ -19,37 +29,86 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/tv_distance_time" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/btn_search"
-        android:layout_alignParentTop="true"
+
+    <EditText
+        android:id="@+id/autocomplete_places"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="9dp"
+        android:singleLine="true"
+        android:background="@drawable/edit_text_style"
+        android:textColorHint="@color/grey"
+        android:hint="@string/autocomplete_hint"
+        android:drawableLeft="@drawable/search"
+
+
+        android:drawablePadding="9dp"
+        android:textColor="@android:color/primary_text_light"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/map"
-        android:layout_alignEnd="@+id/map"
-        android:onClick="onSearch"/>
+        android:layout_alignEnd="@+id/map" />
 
-    <SearchView
+        <ImageView
+        android:id="@+id/cross"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/cross"/>
+
+
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignTop="@+id/map" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txt_search"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/btn_search"
-        android:layout_toStartOf="@+id/btn_search" />
-
-    <TextView
-        android:id="@+id/tv_distance_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Distance and Time"
-        android:layout_below="@+id/btn_search"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/btn_search"
-        android:layout_alignEnd="@+id/btn_search" />
-
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_menu_directions"
+        android:layout_alignBottom="@+id/map"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#00B2EE"/>
 </RelativeLayout>
+
+    <!--<Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:id="@+id/btn_search"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/map"
+            android:layout_alignEnd="@+id/map"
+            android:onClick="onSearch"/>
+
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_search"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/btn_search"
+            android:layout_toStartOf="@+id/btn_search" />
+        <SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_search"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/btn_search"
+            android:layout_toStartOf="@+id/btn_search" />-->
