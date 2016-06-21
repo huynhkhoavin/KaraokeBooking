@@ -38,6 +38,7 @@ public abstract class ReadJson extends AsyncTask<String, Integer,String> {
         catch(Exception e)
         {
             e.printStackTrace();
+            System.out.println("Doing Background:" + e.toString());
         }
         return content.toString();
     }

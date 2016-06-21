@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/my_custom_background"
+    android:onClick="roomClick"
+    android:id="@+id/layout_songs"
+    android:layout_height="50dp">
+    <TextView
+        android:layout_width="290dp"
+        android:layout_height="60dp"
+        android:text="Nắng Ấm Xa Dần"
+        android:id="@+id/tv_ten_bai_hat"
+        android:textSize="20dp"
+        android:textColor="#4a7cfa"
+        android:layout_marginLeft="100dp"
+        android:layout_alignTop="@+id/tv_maso"
+        android:gravity="center_vertical"
+        />
+
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="123456"
+        android:id="@+id/tv_maso"
+        android:textSize="20dp"
+        android:textColor="#fa564a"
+        android:layout_marginLeft="17dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
+

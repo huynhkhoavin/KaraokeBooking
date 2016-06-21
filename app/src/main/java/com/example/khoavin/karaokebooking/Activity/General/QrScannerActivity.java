@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking.Activity;
+package com.example.khoavin.karaokebooking.Activity.General;
 
 import android.app.AlertDialog;
 import android.os.Bundle;

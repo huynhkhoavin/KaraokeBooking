@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking.Activity;
+package com.example.khoavin.karaokebooking.Activity.Manager;
 
 import android.app.Activity;
 import android.content.Intent;

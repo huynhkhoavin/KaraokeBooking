@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.khoavin.karaokebooking.Activity.HomeClientActivity"
+    tools:context="com.example.khoavin.karaokebooking.Activity.Client.HomeClientActivity"
     tools:showIn="@layout/app_bar_home_client">
 
 </RelativeLayout>

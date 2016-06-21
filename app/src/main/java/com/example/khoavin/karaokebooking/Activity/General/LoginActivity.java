@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking.Activity;
+package com.example.khoavin.karaokebooking.Activity.General;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+import com.example.khoavin.karaokebooking.Activity.Client.HomeClientActivity;
+import com.example.khoavin.karaokebooking.Activity.Manager.HomeManagerActivity;
+import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.account;
 import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.Object_To_Json;
@@ -25,7 +27,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 public class LoginActivity extends Activity {
 
     Button btn_Login;
@@ -33,6 +34,7 @@ public class LoginActivity extends Activity {
     EditText txt_Username;
     EditText txt_Password;
     ProgressDialog pDialog;
+    ManagerFragment fragment = new ManagerFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,9 @@ public class LoginActivity extends Activity {
             }
         });
     }
+
+
+
     public class Login_Request extends AsyncTask<String, String, String>
     {
         HttpURLConnection connection = null;

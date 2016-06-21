@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking.Activity;
+package com.example.khoavin.karaokebooking.Activity.Manager;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -27,7 +27,6 @@ public class ManagerActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
         gridView = (GridView) findViewById(R.id.gv_manager);
-
         gridView.setAdapter(new MyAdapter(this));
     }
     private class MyAdapter extends BaseAdapter
@@ -81,7 +80,6 @@ public class ManagerActivity extends ActionBarActivity {
             name = (TextView)v.getTag(R.id.text);
 
             Item item = (Item)getItem(i);
-
             picture.setImageResource(item.drawableId);
             name.setText(item.name);
 

@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking.Fragment;
+package com.example.khoavin.karaokebooking.Fragment.Manager;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -40,7 +40,7 @@ public class ManagerFragment extends Fragment {
                     public int doSomeThing(String x) {
                         return 0;
                     }
-                }.execute("http://192.168.1.48:8080/webservice/management.php?action=load_room&data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
+                }.execute("http://192.168.1.47:8888/webservice/management.php?action=load_room&data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
             }
         });
         return fragmentViews;
@@ -99,7 +99,12 @@ public class ManagerFragment extends Fragment {
 
             picture.setImageResource(item.drawableId);
             name.setText(item.name);
-
+            picture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    
+                }
+            });
             return v;
         }
 

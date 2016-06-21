@@ -3,6 +3,7 @@ package com.example.khoavin.karaokebooking.Activity.Manager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.widget.ListView;
 
 import com.example.khoavin.karaokebooking.Adapter.PD_Adapter;
@@ -31,6 +32,14 @@ public class RoomActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         init();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+            // Inflate the menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            return true;
+    }
+
     private void init()
     {
         mList_PhongDat = new ArrayList<Phong_Dat>();

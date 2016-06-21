@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking.Activity;
+package com.example.khoavin.karaokebooking.Activity.Client;
 
 import android.app.Activity;
 import android.os.AsyncTask;

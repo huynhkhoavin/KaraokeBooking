@@ -1,4 +1,4 @@
-package com.example.khoavin.karaokebooking.Activity;
+package com.example.khoavin.karaokebooking.Activity.Manager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +15,10 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.khoavin.karaokebooking.Activity.Manager.RoomActivity;
-import com.example.khoavin.karaokebooking.Fragment.ManagerFragment;
+import com.example.khoavin.karaokebooking.Activity.Client.KaraokeActivity;
+import com.example.khoavin.karaokebooking.Activity.General.MapActivity;
+import com.example.khoavin.karaokebooking.Activity.General.QrScannerActivity;
+import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
 import com.example.khoavin.karaokebooking.Fragment.RoomsFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 import com.example.khoavin.karaokebooking.R;
@@ -27,13 +29,14 @@ public class HomeManagerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ArrayList<Phong_Dat> mList_PhongDat = new ArrayList<Phong_Dat>();
     ListView listPD;
+    ManagerFragment fragment = new ManagerFragment();
+    android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
     Button btn_4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_manager);
-        ManagerFragment fragment = new ManagerFragment();
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+
         fm.beginTransaction()
                 .replace(R.id.fl_content, fragment)
                 .commit();
@@ -51,65 +54,6 @@ public class HomeManagerActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-    }
-
-    private void doFakeData()
-    {
-        Phong_Dat pd = new Phong_Dat();
-        pd.setPD_TEN_PHONG("Phòng 1");
-        pd.setPD_TRANG_THAI(R.drawable.room_available);
-        pd.setPD_GIA_TIEN(100);
-        pd.setPD_Status("Đang Có Sẵn");
-
-        Phong_Dat pd2 = new Phong_Dat();
-        pd2.setPD_TEN_PHONG("Phòng 2");
-        pd2.setPD_TRANG_THAI(R.drawable.room_unavailable);
-        pd2.setPD_GIA_TIEN(100);
-        pd2.setPD_Status("Đang Dùng");
-
-        Phong_Dat pd3 = new Phong_Dat();
-        pd3.setPD_TEN_PHONG("Phòng 3");
-        pd3.setPD_TRANG_THAI(R.drawable.room_waiting);
-        pd3.setPD_GIA_TIEN(100);
-        pd3.setPD_Status("Đang Chờ");
-
-        Phong_Dat pd4 = new Phong_Dat();
-        pd4.setPD_TEN_PHONG("Phòng 4");
-        pd4.setPD_TRANG_THAI(R.drawable.room_available);
-        pd4.setPD_GIA_TIEN(100);
-        pd4.setPD_Status("Đang Có Sẵn");
-
-        Phong_Dat pd5 = new Phong_Dat();
-        pd5.setPD_TEN_PHONG("Phòng 5");
-        pd5.setPD_TRANG_THAI(R.drawable.room_available);
-        pd5.setPD_GIA_TIEN(100);
-        pd5.setPD_Status("Đang Có Sẵn");
-
-        Phong_Dat pd6 = new Phong_Dat();
-        pd6.setPD_TEN_PHONG("Phòng 6");
-        pd6.setPD_TRANG_THAI(R.drawable.room_unavailable);
-        pd6.setPD_GIA_TIEN(100);
-        pd6.setPD_Status("Đang Dùng");
-
-        Phong_Dat pd7 = new Phong_Dat();
-        pd7.setPD_TEN_PHONG("Phòng 7");
-        pd7.setPD_TRANG_THAI(R.drawable.room_waiting);
-        pd7.setPD_GIA_TIEN(100);
-        pd7.setPD_Status("Đang Chờ");
-
-        Phong_Dat pd8 = new Phong_Dat();
-        pd8.setPD_TEN_PHONG("Phòng 8");
-        pd8.setPD_TRANG_THAI(R.drawable.room_available);
-        pd8.setPD_GIA_TIEN(100);
-        pd8.setPD_Status("Đang Có Sẵn");
-        mList_PhongDat.add(pd);
-        mList_PhongDat.add(pd2);
-        mList_PhongDat.add(pd3);
-        mList_PhongDat.add(pd4);
-        mList_PhongDat.add(pd5);
-        mList_PhongDat.add(pd6);
-        mList_PhongDat.add(pd7);
-        mList_PhongDat.add(pd8);
     }
     @Override
     public void onBackPressed() {
@@ -152,14 +96,11 @@ public class HomeManagerActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_diadiem) {
             RoomsFragment fragment = new RoomsFragment();
-            android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
                     .replace(R.id.fl_content, fragment)
                     .commit();
 
         } else if (id == R.id.nav_rooms) {
-            ManagerFragment fragment = new ManagerFragment();
-            android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
                     .replace(R.id.fl_content, fragment)
                     .commit();
@@ -178,7 +119,6 @@ public class HomeManagerActivity extends AppCompatActivity
             Intent intent = new Intent(this, QrScannerActivity.class);
             startActivity(intent);
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
