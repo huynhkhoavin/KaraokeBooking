@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.khoavin.karaokebooking.Activity.Client.HomeClientActivity;
 import com.example.khoavin.karaokebooking.Activity.Manager.HomeManagerActivity;
+import com.example.khoavin.karaokebooking.Fragment.Client.DSPhongDatFragment;
 import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.account;
 import com.example.khoavin.karaokebooking.R;
@@ -48,6 +49,7 @@ public class LoginActivity extends Activity {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DSPhongDatFragment.setUserNameToSearch(txt_Username.getText().toString());
                 Login_Request postRequest = new Login_Request();
                 postRequest.setAction("login", Object_To_Json.convertToJson(new account(txt_Username.getText().toString(), txt_Password.getText().toString())));
                 postRequest.execute("http://192.168.1.43:80/webservice/login.php");

@@ -57,6 +57,7 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".Activity.General.RegisterActivity" />
         <activity android:name=".Activity.General.MapActivity"/>
+        <activity android:name=".Fragment.Client.XemQRPhongDatFragment"/>
         <activity android:name=".Activity.Manager.ManagerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

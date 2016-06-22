@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LÀNG ĐẠI HỌC"
+        android:id="@+id/qrview_branch"
+        android:textSize="25dp"
+        android:textColor="#fa564a"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="8h30 - 10h30 - 22/6/2015"
+        android:id="@+id/qrview_time"
+        android:textSize="15dp"
+        android:textColor="#4a7cfa"
+        android:gravity="center"
+        android:layout_below="@+id/qrview_branch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Phòng: 12345"
+        android:id="@+id/qrview_room"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_below="@+id/qrview_time"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/qrview_qr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/qrview_room"
+        android:layout_above="@+id/qrview_camon" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Quán Karaoke Gia Đình xin cảm ơn quý khách"
+        android:id="@+id/qrview_camon"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:textColor="#fa564a"
+        />
+
+</RelativeLayout>
