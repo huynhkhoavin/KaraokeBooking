@@ -4,28 +4,52 @@ package com.example.khoavin.karaokebooking.Activity.General;
  * Created by OatOal on 5/20/2016.
  */
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.khoavin.karaokebooking.Activity.General.BranchActivity;
+import com.example.khoavin.karaokebooking.Adapter.PlacesAutoCompleteAdapter;
 import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.BranchArrayList;
+import com.example.khoavin.karaokebooking.Tools.Constants;
 import com.example.khoavin.karaokebooking.Tools.DirectionsJSONParser;
+import com.example.khoavin.karaokebooking.Tools.RecyclerItemClickListener;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -41,15 +65,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MapActivity extends FragmentActivity {
+public class MapActivity extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+
+
+    //các thuộc tính phục vụ cho autocomplete places của google.
+    protected GoogleApiClient mGoogleApiClient;
+
+    private static final LatLngBounds BOUNDS_INDIA = new LatLngBounds(
+            new LatLng(-0, 0), new LatLng(0, 0));
+
+    private EditText mAutocompleteView;
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLinearLayoutManager;
+    private PlacesAutoCompleteAdapter mAutoCompleteAdapter;
+    ImageView delete;
+
 
     GoogleMap map;
     ArrayList<LatLng> markerPoints;
     TextView tvDistanceDuration;
+    Location myLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        buildGoogleApiClient();
         setContentView(R.layout.activity_map);
 
         tvDistanceDuration = (TextView) findViewById(R.id.tv_distance_time);
@@ -63,23 +103,6 @@ public class MapActivity extends FragmentActivity {
         // Getting Map for the SupportMapFragment
         map = fm.getMap();
 
-        // Enable MyLocation Button in the Map
-        map.setMyLocationEnabled(true);
-
-
-        /*map.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
-            @Override
-            public void onMyLocationChange(Location location) {
-
-                LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-                map.addMarker(new MarkerOptions().position(loc));
-                if (map != null) {
-                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
-                }
-            }
-        });
-       ;*/
-
         map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 
             @Override
@@ -89,40 +112,21 @@ public class MapActivity extends FragmentActivity {
                     markerPoints.clear();
                     map.clear();
                 }
-
-                // Adding new item to the ArrayList
                 markerPoints.add(point);
-
-                // Creating MarkerOptions
                 MarkerOptions options = new MarkerOptions();
-
-                // Setting the position of the marker
                 options.position(point);
-
-                /**
-                 * For the start location, the color of marker is GREEN and
-                 * for the end location, the color of marker is RED.
-                 */
                 if (markerPoints.size() == 1) {
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                 } else if (markerPoints.size() == 2) {
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                 }
-
-                // Add new marker to the Google Map Android API V2
                 map.addMarker(options);
-
-                // Checks, whether start and end locations are captured
                 if (markerPoints.size() >= 2) {
                     LatLng origin = markerPoints.get(0);
                     LatLng dest = markerPoints.get(1);
-
-                    // Getting URL to the Google Directions API
                     String url = getDirectionsUrl(origin, dest);
 
                     DownloadTask downloadTask = new DownloadTask();
-
-                    // Start downloading json data from Google Directions API
                     downloadTask.execute(url);
                 }
             }
@@ -132,37 +136,128 @@ public class MapActivity extends FragmentActivity {
                 .position(new LatLng(10.952266, 106.810035))
                 .title("Hello world"));
 
-    }
-    public void onSearch(View view)
-    {
-        SearchView location_tf = (SearchView)findViewById(R.id.txt_search);
-        String location = location_tf.getQuery().toString();
-        if(location.equals(""))
-        {
-            //move to new intent
-            //Toast.makeText(getBaseContext(), "please enter address to search!", Toast.LENGTH_LONG).show();
-            Intent branchIntent = new Intent(this, BranchActivity.class);
-            startActivity(branchIntent);
-            return;
-        }
-        List<Address> addressList = null;
-        if(location != null || !location.equals(""))
-        {
-            Geocoder geocoder = new Geocoder(this);
-            try {
-                addressList = geocoder.getFromLocationName(location , 1);
 
+        //Init map autocomplete places
+        mAutocompleteView = (EditText) findViewById(R.id.autocomplete_places);
 
-            } catch (IOException e) {
-                e.printStackTrace();
+        delete = (ImageView) findViewById(R.id.cross);
+
+        mAutoCompleteAdapter = new PlacesAutoCompleteAdapter(this, R.layout.searchview_adapter,
+                mGoogleApiClient, BOUNDS_INDIA, null);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mLinearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mRecyclerView.setAdapter(mAutoCompleteAdapter);
+        delete.setOnClickListener(this);
+        mRecyclerView.setVisibility(View.INVISIBLE);
+        mAutocompleteView.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                if (mRecyclerView.getVisibility() == View.INVISIBLE) {
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                }
+                if (!s.toString().equals("") && mGoogleApiClient.isConnected()) {
+                    mAutoCompleteAdapter.getFilter().filter(s.toString());
+                } else if (!mGoogleApiClient.isConnected()) {
+                    Toast.makeText(getApplicationContext(), Constants.API_NOT_CONNECTED, Toast.LENGTH_SHORT).show();
+                    Log.e(Constants.PlacesTag, Constants.API_NOT_CONNECTED);
+                }
+
             }
 
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude() , address.getLongitude());
-            map.addMarker(new MarkerOptions().position(latLng).title("Marker"));
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+            }
+
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        mRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        final PlacesAutoCompleteAdapter.PlaceAutocomplete item = mAutoCompleteAdapter.getItem(position);
+                        final String placeId = String.valueOf(item.placeId);
+                        Log.i("TAG", "Autocomplete item selected: " + item.description);
+                        /*
+                             Issue a request to the Places Geo Data API to retrieve a Place object with additional details about the place.
+                         */
+
+                        PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                                .getPlaceById(mGoogleApiClient, placeId);
+                        placeResult.setResultCallback(new ResultCallback<PlaceBuffer>() {
+                            @Override
+                            public void onResult(PlaceBuffer places) {
+                                if (places.getCount() == 1) {
+                                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(places.get(0).getLatLng(), 15));
+                                    mAutoCompleteAdapter.clearList();
+                                    mAutoCompleteAdapter.notifyDataSetChanged();
+                                    mRecyclerView.setVisibility(View.INVISIBLE);
+                                    addMarkerToMap(places.get(0).getLatLng(),false, "");
+                                } else {
+                                    Toast.makeText(getApplicationContext(), Constants.SOMETHING_WENT_WRONG, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        Log.i("TAG", "Clicked: " + item.description);
+                        Log.i("TAG", "Called getPlaceById to get Place details for " + item.placeId);
+                    }
+                })
+        );
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LatLng point = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
+                if (markerPoints.size() > 1) {
+                    markerPoints.clear();
+                    map.clear();
+                }
+
+                markerPoints.add(point);
+                if(markerPoints.size() >= 2){
+                    map.clear();
+                    addMarkerToMap(markerPoints.get(0), false, "End point!");
+                    addMarkerToMap(markerPoints.get(1), true, "Start point!");
+                }
+                else{
+                    addMarkerToMap(point, true, "Start point");
+                }
+
+                if (markerPoints.size() >= 2) {
+                    LatLng origin = markerPoints.get(1);
+                    LatLng dest = markerPoints.get(0);
+                    String url = getDirectionsUrl(origin, dest);
+
+                    DownloadTask downloadTask = new DownloadTask();
+                    downloadTask.execute(url);
+                }
+            }
+        });
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         }
+
+
+        map.setMyLocationEnabled(true);
+        map.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+            @Override
+            public void onMyLocationChange(Location location) {
+
+                /*LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+                map.addMarker(new MarkerOptions().position(loc));
+                if (map != null) {
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
+                }*/
+            }
+        });
     }
+
     private String getDirectionsUrl(LatLng origin, LatLng dest) {
 
         // Origin of route
@@ -186,9 +281,6 @@ public class MapActivity extends FragmentActivity {
         return url;
     }
 
-    /**
-     * A method to download json data from url
-     */
     private String downloadUrl(String strUrl) throws IOException {
         String data = "";
         InputStream iStream = null;
@@ -227,7 +319,6 @@ public class MapActivity extends FragmentActivity {
         return data;
     }
 
-    // Fetches data from url passed
     private class DownloadTask extends AsyncTask<String, Void, String> {
 
         // Downloading data in non-ui thread
@@ -259,12 +350,8 @@ public class MapActivity extends FragmentActivity {
         }
     }
 
-    /**
-     * A class to parse the Google Places in JSON format
-     */
     private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String, String>>>> {
 
-        // Parsing the data in non-ui thread
         @Override
         protected List<List<HashMap<String, String>>> doInBackground(String... jsonData) {
 
@@ -283,7 +370,6 @@ public class MapActivity extends FragmentActivity {
             return routes;
         }
 
-        // Executes in UI thread, after the parsing process
         @Override
         protected void onPostExecute(List<List<HashMap<String, String>>> result) {
             ArrayList<LatLng> points = null;
@@ -332,8 +418,102 @@ public class MapActivity extends FragmentActivity {
 
             tvDistanceDuration.setText("Distance:" + distance + ", Duration:" + duration);
 
-            // Drawing polyline in the Google Map for the i-th route
             map.addPolyline(lineOptions);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .addApi(Places.GEO_DATA_API)
+                .build();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        myLocation = new Location(LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()), 15));
+        Log.v("Google API Callback", "Connection Done");
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.v("Google API Callback", "Connection Suspended");
+        Log.v("Code", String.valueOf(i));
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.v("Google API Callback","Connection Failed");
+        Log.v("Error Code", String.valueOf(connectionResult.getErrorCode()));
+        Toast.makeText(this, Constants.API_NOT_CONNECTED,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v==delete){
+            mAutocompleteView.setText("");
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!mGoogleApiClient.isConnected() && !mGoogleApiClient.isConnecting()){
+            Log.v("Google API","Connecting");
+            mGoogleApiClient.connect();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(mGoogleApiClient.isConnected()){
+            Log.v("Google API","Dis-Connecting");
+            mGoogleApiClient.disconnect();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    public void addMarkerToMap(LatLng point, boolean color, String description)
+    {
+        MarkerOptions options = new MarkerOptions();
+        options.position(point);
+        options.title(description);
+        if(color){
+            options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+        }
+        else
+            options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+        map.addMarker(options);
     }
 }

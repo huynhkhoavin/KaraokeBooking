@@ -5,18 +5,15 @@ public class SongInfo {
 	private String songName;
 	private String SongLyric;
 	private String author;
-	private String vol;
-	
-	
-	public String getVol() {
-		return vol;
-	}
-	public void setVol(String vol) {
-		this.vol = vol;
+
+	public SongInfo(){
+		songID = "";
+		songName = "";
+		SongLyric = "";
+		author = "";
 	}
 
-	
-	
+
 	public String getSongID() {
 		return songID;
 	}
@@ -42,6 +39,6 @@ public class SongInfo {
 		this.author = author;
 	}
 	public String getSongInfo(){
-		return "\nMã số: " + songID + "\nVOL: " + vol +  "\nTên: " + songName + "\nLời: " + SongLyric + "\nNhạc sỹ: " + author;
+		return "\nMã số: " + songID + "\nTên: " + songName + "\nLời: " + SongLyric + "\nNhạc sỹ: " + author;
 	}
 }

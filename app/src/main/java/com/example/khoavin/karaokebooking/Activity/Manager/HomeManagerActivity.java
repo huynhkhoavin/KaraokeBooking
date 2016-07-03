@@ -18,6 +18,7 @@ import android.widget.ListView;
 import com.example.khoavin.karaokebooking.Activity.Client.KaraokeActivity;
 import com.example.khoavin.karaokebooking.Activity.General.MapActivity;
 import com.example.khoavin.karaokebooking.Activity.General.QrScannerActivity;
+import com.example.khoavin.karaokebooking.Fragment.Client.DSPhongDatFragment;
 import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 import com.example.khoavin.karaokebooking.R;
@@ -108,8 +109,12 @@ public class HomeManagerActivity extends AppCompatActivity
             Intent it = new Intent(HomeManagerActivity.this, MapActivity.class);
             startActivity(it);
         } else if (id == R.id.nav_kara) {
-            Intent it = new Intent(HomeManagerActivity.this, KaraokeActivity.class);
-            startActivity(it);
+           // Intent it = new Intent(HomeManagerActivity.this, KaraokeActivity.class);
+           //startActivity(it);
+            DSPhongDatFragment fragment = new DSPhongDatFragment();
+            fm.beginTransaction()
+                    .replace(R.id.fl_content, fragment)
+                    .commit();
         } else if (id == R.id.nav_qr) {
             Intent intent = new Intent(this, QrScannerActivity.class);
             startActivity(intent);

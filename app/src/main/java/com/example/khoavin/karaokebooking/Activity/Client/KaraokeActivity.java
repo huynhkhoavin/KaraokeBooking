@@ -31,6 +31,8 @@ public class KaraokeActivity extends Activity {
         lv_songs = (ListView)findViewById(R.id.lv_songs);
         btn_search = (Button)findViewById(R.id.btn_search_song);
 
+        GetSong getsong = new GetSong();
+        getsong.execute(GetHtml.HomePageKaraokeSearch());
 
 
 
