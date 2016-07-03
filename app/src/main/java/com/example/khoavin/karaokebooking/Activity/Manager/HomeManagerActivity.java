@@ -15,9 +15,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.khoavin.karaokebooking.Activity.Client.KaraokeActivity;
 import com.example.khoavin.karaokebooking.Activity.General.MapActivity;
-import com.example.khoavin.karaokebooking.Activity.General.QrScannerActivity;
+import com.example.khoavin.karaokebooking.Fragment.Manager.QrScannerFragment;
 import com.example.khoavin.karaokebooking.Fragment.Client.DSPhongDatFragment;
 import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
 import com.example.khoavin.karaokebooking.Fragment.RoomsFragment;
@@ -121,8 +120,10 @@ public class HomeManagerActivity extends AppCompatActivity
                     .replace(R.id.fl_content, fragment)
                     .commit();
         } else if (id == R.id.nav_qr) {
-            Intent intent = new Intent(this, QrScannerActivity.class);
-            startActivity(intent);
+            QrScannerFragment fragment = new QrScannerFragment();
+            fm.beginTransaction()
+                    .replace(R.id.fl_content, fragment)
+                    .commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

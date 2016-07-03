@@ -50,7 +50,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity.Manager.RoomDetailActivity" />
         <activity android:name=".Activity.Client.KaraokeActivity" />
-        <activity android:name=".Activity.General.QrScannerActivity" />
         <activity android:name=".Activity.General.BranchActivity" />
         <activity
             android:name=".Activity.General.SettingsActivity"

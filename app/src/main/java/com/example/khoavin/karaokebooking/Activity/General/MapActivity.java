@@ -5,17 +5,23 @@ package com.example.khoavin.karaokebooking.Activity.General;
  */
 
 import android.Manifest;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -136,6 +142,35 @@ public class MapActivity extends FragmentActivity implements GoogleApiClient.Con
                 .position(new LatLng(10.952266, 106.810035))
                 .title("Hello world"));
 
+
+        //check if location service is enable
+
+        LocationManager locManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        if (locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            //GPS enabled
+        }
+
+        else{
+            //GPS disabled
+            new AlertDialog.Builder(this)
+                    .setTitle("Location service!")
+                    .setMessage("Location service are disabled!")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // continue with delete
+                            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
 
         //Init map autocomplete places
         mAutocompleteView = (EditText) findViewById(R.id.autocomplete_places);
@@ -450,15 +485,20 @@ public class MapActivity extends FragmentActivity implements GoogleApiClient.Con
 
     @Override
     public void onConnected(Bundle bundle) {
+        try{
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
+
+            myLocation = new Location(LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()), 15));
+            Log.v("Google API Callback", "Connection Done");
+        } catch (Exception e){
+            Toast.makeText(this.getApplicationContext(),"Không nhật được vị trí cuối cùng!", Toast.LENGTH_LONG).show();
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(16.416686, 107.623261), 5));
         }
-
-        myLocation = new Location(LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient));
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()), 15));
-        Log.v("Google API Callback", "Connection Done");
     }
 
     @Override

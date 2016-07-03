@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <me.dm7.barcodescanner.zxing.ZXingScannerView
+        android:layout_width="match_parent"
+        android:layout_height="266dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/qrscan_zxview"
+        android:layout_below="@+id/qrscan_room"
+        android:layout_above="@+id/qrscan_btnxacnhan"></me.dm7.barcodescanner.zxing.ZXingScannerView>
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kính chào quý khách"
+        android:id="@+id/qrscan_branchname"
+        android:textSize="25dp"
+        android:textColor="#fa564a"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="10h30 - 22/6/2015"
+        android:id="@+id/qrscan_time"
+        android:textSize="15dp"
+        android:textColor="#4a7cfa"
+        android:gravity="center"
+        android:layout_below="@+id/qrscan_branchname"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/qrscan_room"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_below="@+id/qrscan_time"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:background="#00FF00"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:id="@+id/qrscan_btnxacnhan"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="OK"/>
+
+
+</RelativeLayout>

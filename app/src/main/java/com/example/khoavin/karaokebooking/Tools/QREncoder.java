@@ -8,6 +8,10 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -57,13 +61,43 @@ public class QREncoder {
         return saltStr;
     }
 
-    public static Bitmap createBitmap(String tk_id, String pd_id){
-        try {
-            return encodeAsBitmap(tk_id + "-" + pd_id + "-" + RandomString());
-        } catch (WriterException e) {
+    public static String createRandomQRString(String tk_id, String pd_id, Date NGAY_DAT){
+        return (getHeadQrCodeString(tk_id, pd_id, NGAY_DAT) +  "-" + RandomString());
+    }
+
+    public static String createRandomQRString(String tk_id, String pd_id, String NGAY_DAT){
+        return (getHeadQrCodeString(tk_id, pd_id, NGAY_DAT) +  "-" + RandomString());
+    }
+
+    public static String getHeadQrCodeString(String tk_id, String pd_id, Date NGAY_DAT)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(NGAY_DAT);
+
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        return(tk_id + "-" + pd_id + "-" + Integer.toString(day)  + Integer.toString(month) +  Integer.toString(year));
+    }
+
+    public static String getHeadQrCodeString(String tk_id, String pd_id, String NGAY_DAT)
+    {
+        Date ngaydat = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try
+        {
+            ngaydat = sdf.parse(NGAY_DAT);
+        } catch (ParseException e) {
             e.printStackTrace();
-            System.out.println("Không thể tạo ảnh Qr");
-            return null;
         }
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(ngaydat);
+
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        return(tk_id + "-" + pd_id + "-" + Integer.toString(day)  + Integer.toString(month) +  Integer.toString(year));
     }
 }
