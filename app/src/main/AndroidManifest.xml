@@ -78,6 +78,8 @@
             android:name=".Activity.Manager.RoomActivity"
             android:label="@string/title_activity_room"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.General.SelectBusinessActivity"></activity>
+        <activity android:name=".Activity.General.SelectBusinessActivity" />
+        <activity android:name=".Activity.Client.RoomStatusActivity"></activity>
     </application>
+
 </manifest>

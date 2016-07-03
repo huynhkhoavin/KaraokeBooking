@@ -18,16 +18,6 @@ public class MainActivity extends Activity {
             public void postExecuted(String s) {
                 //System.out.println(s);
             }
-
-            @Override
-            public void preDoing() {
-
-            }
-
-            @Override
-            public void postDoing() {
-
-            }
         };
         webConnect.setAction("get_free_room","sss");
         webConnect.execute("http://192.168.1.43:80/webservice/book.php");
