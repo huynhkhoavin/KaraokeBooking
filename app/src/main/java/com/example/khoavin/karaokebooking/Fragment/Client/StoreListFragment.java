@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.khoavin.karaokebooking.Adapter.StoreAdapter;
+import com.example.khoavin.karaokebooking.Adapter.Store_Adapter;
 import com.example.khoavin.karaokebooking.KaraokeObject.Store;
 import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.WebConnect;
@@ -27,7 +27,7 @@ public class StoreListFragment extends Fragment {
 
     ListView listStore;
     TextView tvHello;
-    StoreAdapter storeAdapter;
+    Store_Adapter storeAdapter;
     WebConnect webConnect;
     ArrayList<Store> mListStore;
 
@@ -50,7 +50,7 @@ public class StoreListFragment extends Fragment {
                                 mListStore.add(store);
                                 System.out.println(mListStore.size());
                             }
-                            storeAdapter = new StoreAdapter(getContext(),R.layout.item_phong,mListStore);
+                            storeAdapter = new Store_Adapter(getContext(),R.layout.item_phong,mListStore);
                             listStore.setAdapter(storeAdapter);
 
                         } catch (JSONException e) {
@@ -68,7 +68,8 @@ public class StoreListFragment extends Fragment {
 
             }
         };
-        webConnect.setAction("get_all_store","data");
+        webConnect.setAction("get_all_store","" +
+                "");
         webConnect.execute("http://192.168.1.47:8888/webservice/book.php");
         return fragmentViews;
     }

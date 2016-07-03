@@ -114,6 +114,6 @@ public abstract class WebConnect extends AsyncTask<String, String, String>
         System.out.println("Kết quả là:" + result);
     }
     public abstract void  postExecuted(String s);
-    public abstract void preDoing();
-    public abstract void postDoing();// không được viết hàm thay đổi UI ở đây vì chạy dưới nền
+    public void preDoing(){};
+    public void postDoing(){};// không được viết hàm thay đổi UI ở đây vì chạy dưới nền
 }

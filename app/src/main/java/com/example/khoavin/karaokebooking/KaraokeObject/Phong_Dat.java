@@ -10,6 +10,8 @@ public class Phong_Dat {
     String PD_TEN_PHONG;
     int PD_LOAI_PHONG;
     int PD_TRANG_THAI;
+    Time PD_GIO_BAT_DAU;
+    Time PD_GIO_KET_THUC;
     public Phong_Dat()
     {}
     public Phong_Dat(String id, String ten)
@@ -83,6 +85,5 @@ public class Phong_Dat {
         this.PD_GIO_BAT_DAU = PD_GIO_BAT_DAU;
     }
 
-    Time PD_GIO_BAT_DAU;
-    Time PD_GIO_KET_THUC;
+
 }

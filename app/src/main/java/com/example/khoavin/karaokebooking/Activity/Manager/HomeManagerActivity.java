@@ -19,7 +19,6 @@ import com.example.khoavin.karaokebooking.Activity.Client.KaraokeActivity;
 import com.example.khoavin.karaokebooking.Activity.General.MapActivity;
 import com.example.khoavin.karaokebooking.Activity.General.QrScannerActivity;
 import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
-import com.example.khoavin.karaokebooking.Fragment.RoomsFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 import com.example.khoavin.karaokebooking.R;
 
@@ -40,7 +39,7 @@ public class HomeManagerActivity extends AppCompatActivity
         fm.beginTransaction()
                 .replace(R.id.fl_content, fragment)
                 .commit();
-        setTitle(" ");
+        setTitle("");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,10 +94,6 @@ public class HomeManagerActivity extends AppCompatActivity
             startActivity(it);
         }
         else if (id == R.id.nav_diadiem) {
-            RoomsFragment fragment = new RoomsFragment();
-            fm.beginTransaction()
-                    .replace(R.id.fl_content, fragment)
-                    .commit();
 
         } else if (id == R.id.nav_rooms) {
             fm.beginTransaction()
