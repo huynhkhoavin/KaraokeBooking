@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.khoavin.karaokebooking.Activity.General.LoginActivity;
 import com.example.khoavin.karaokebooking.Fragment.Client.StoreListFragment;
 import com.example.khoavin.karaokebooking.Fragment.ToolFragment.DatePickerFragment;
 import com.example.khoavin.karaokebooking.R;
@@ -25,7 +26,7 @@ public class HomeClientActivity extends AppCompatActivity
         setContentView(R.layout.activity_home_client);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        System.out.println("User Info"+LoginActivity.getLoginAccount().getUserid());
 
         //-------------------
         fm.beginTransaction()
@@ -91,7 +92,6 @@ public class HomeClientActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 //    public void showDatePickerDialog(View view) {
 //        DialogFragment newFragment = new DatePickerFragment();
 //        newFragment.show(getSupportFragmentManager(), "datePicker");

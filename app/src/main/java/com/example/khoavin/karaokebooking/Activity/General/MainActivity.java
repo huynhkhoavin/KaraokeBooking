@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.khoavin.karaokebooking.Activity.Client.HomeClientActivity;
 import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.WebConnect;
 

@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.khoavin.karaokebooking.Activity.General.LoginActivity;
 import com.example.khoavin.karaokebooking.Adapter.Room_Status_Adapter;
 import com.example.khoavin.karaokebooking.Fragment.ToolFragment.DatePickerFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.DanhSachDatPhong;
@@ -27,7 +28,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +43,7 @@ public class RoomStatusFragment extends Fragment {
     String Selected_Day;
     Room_Status_Adapter room_status_adapter;
     ListView lv_Status;
+    int PD_ID;
     ArrayList<Room_Status_Unit> hList = new ArrayList<Room_Status_Unit>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +58,7 @@ public class RoomStatusFragment extends Fragment {
                 DialogFragment newFragment = new DatePickerFragment() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        LoadStatusList();
+                        LoadStatusList(day, month + 1, year);
                     }
                 };
                 newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
@@ -75,11 +81,13 @@ public class RoomStatusFragment extends Fragment {
         });
         return fragmentViews;
     }
-    public void LoadStatusList(){
+    public void LoadStatusList(int day, int month, int year){
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("PD_ID", 1);
-        data.put("Date", "2016-06-22");
+        data.put("PD_ID", String.valueOf(PD_ID));
+        String Date = String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day);
+        data.put("Date", Date);
         String x = Object_To_Json.HashMapToJson(data);
+        System.out.println(x);
         webConnect = new WebConnect() {
             @Override
             public void postExecuted(String s) {
@@ -110,5 +118,13 @@ public class RoomStatusFragment extends Fragment {
         webConnect.setAction("get_status_one_room", x);
         webConnect.execute("http://192.168.1.47:8888/webservice/book.php");
         System.out.println("Clicked");
+    }
+
+    public int getPD_ID() {
+        return PD_ID;
+    }
+
+    public void setPD_ID(int PD_ID) {
+        this.PD_ID = PD_ID;
     }
 }

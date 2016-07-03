@@ -34,7 +34,6 @@ public class RoomStatusActivity extends ActionBarActivity implements android.sup
         viewpager = (ViewPager) findViewById(R.id.pager);
         ft = new FragmentPageAdapter(getSupportFragmentManager());
         actionbar = getSupportActionBar();
-        viewpager.setAdapter(ft);
         actionbar.setNavigationMode(android.app.ActionBar.NAVIGATION_MODE_TABS);
         mListRoom = new ArrayList<Room>();
         webConnect = new WebConnect() {
@@ -56,6 +55,8 @@ public class RoomStatusActivity extends ActionBarActivity implements android.sup
                         mListRoom.add(room);
                     }
                     System.out.println(mListRoom.size());
+                    ft.setmListRoom(mListRoom);
+                    viewpager.setAdapter(ft);
                 }
                 catch (JSONException e) {
                     e.printStackTrace();

@@ -19,7 +19,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
 /**
  * Created by KhoaVin on 25/05/2016.
  */
@@ -52,7 +51,6 @@ public class StoreListFragment extends Fragment {
                             }
                             storeAdapter = new Store_Adapter(getContext(),R.layout.item_phong,mListStore);
                             listStore.setAdapter(storeAdapter);
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

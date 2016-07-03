@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.khoavin.karaokebooking.Activity.General.LoginActivity;
 import com.example.khoavin.karaokebooking.Adapter.DSPhongDaDat_Adapter;
 import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Da_Dat;
@@ -105,8 +106,8 @@ public class DSPhongDatFragment extends Fragment{
 
             }
         };
-        webConnect.setAction("load_dsdat", Object_To_Json.convertToJson(new parsingData(user_name)));
-        webConnect.execute("http://192.168.1.43:80/webservice/layphongdadat.php");
+        webConnect.setAction("load_dsdat", Object_To_Json.convertToJson(new parsingData(LoginActivity.getLoginAccount().getUsername())));
+        webConnect.execute("http://192.168.1.47:8888/webservice/layphongdadat.php");
         return fragmentViews;
     }
 
