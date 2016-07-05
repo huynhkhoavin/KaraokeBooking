@@ -65,7 +65,7 @@ public class RoomStatusActivity extends ActionBarActivity implements android.sup
             }
         };
         webConnect.setAction("get_room_of_store", String.valueOf(1));
-        webConnect.execute("http://192.168.1.47:8888/webservice/book.php");
+        webConnect.execute("book.php");
 
 
         actionbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#41e65f")));

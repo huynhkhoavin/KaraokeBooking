@@ -101,7 +101,7 @@ public class LoginActivity extends Activity {
                 String x = Object_To_Json.HashMapToJson(data);
                 //System.out.println(x);
                 webConnect.setAction("login", x);
-                webConnect.execute("http://192.168.1.47:8888/webservice/login.php");
+                webConnect.execute("login.php");
             }
         });
         btn_Register.setOnClickListener(new View.OnClickListener() {

@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_marginTop="0dp"
     android:layout_marginBottom="0dp"
-    android:layout_height="60dp" android:background="@color/wallet_dim_foreground_holo_dark" android:id="@+id/rl_Status">
+    android:layout_height="60dp" android:background="#e4dfd0" android:id="@+id/rl_Status">
 
     <ImageView
         android:layout_width="wrap_content"

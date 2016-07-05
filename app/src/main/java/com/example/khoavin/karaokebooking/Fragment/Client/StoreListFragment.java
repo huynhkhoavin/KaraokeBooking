@@ -67,7 +67,7 @@ public class StoreListFragment extends Fragment {
             }
         };
         webConnect.setAction("get_all_store","data");
-        webConnect.execute("http://192.168.1.47:8888/webservice/book.php");
+        webConnect.execute("book.php");
         return fragmentViews;
     }
 }

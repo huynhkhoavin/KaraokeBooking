@@ -107,7 +107,7 @@ public class DSPhongDatFragment extends Fragment{
             }
         };
         webConnect.setAction("load_dsdat", Object_To_Json.convertToJson(new parsingData(LoginActivity.getLoginAccount().getUsername())));
-        webConnect.execute("http://192.168.1.47:8888/webservice/layphongdadat.php");
+        webConnect.execute("layphongdadat.php");
         return fragmentViews;
     }
 

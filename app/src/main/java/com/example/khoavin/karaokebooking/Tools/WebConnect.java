@@ -25,13 +25,6 @@ public abstract class WebConnect extends AsyncTask<String, String, String>
     String parameterString;
     String result = "";
     public ProgressDialog pDialog;
-    public void setURL(String u){
-        try {
-            url = new URL(u);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
     public String getResult()
     {
         return result;
@@ -49,16 +42,17 @@ public abstract class WebConnect extends AsyncTask<String, String, String>
     @Override
     protected String doInBackground(String... params) {
 
-        return Post(params[0]);
+        String s = Post(params[0]);
+        return s;
     }
     public String Post(String u)
     {
         connection = null;
         BufferedReader reader = null;
         StringBuffer buffer = null;
-
+        String s = "http://192.168.1.47:8888/webservice/"+u;
         try {
-            URL url = new URL(u);
+            URL url = new URL(s);
             connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("POST");
             String urlParameters = "action="+action+"&"+"data="+parameterString;
