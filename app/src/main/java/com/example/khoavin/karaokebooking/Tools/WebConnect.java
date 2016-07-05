@@ -61,7 +61,9 @@ public abstract class WebConnect extends AsyncTask<String, String, String>
             URL url = new URL(u);
             connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("POST");
+
             String urlParameters = "action="+action+"&"+"data="+parameterString;
+            //String tmp = new String(urlParameters,"UTF-8");
             DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
             wr.writeBytes(urlParameters);
             wr.flush();

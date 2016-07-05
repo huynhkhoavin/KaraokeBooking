@@ -90,11 +90,11 @@ public class Phong_Da_Dat {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        int hour = cal.get(Calendar.HOUR);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
         int min = cal.get(Calendar.MINUTE);
 
         cal.setTime(GIO_KET_THUC);
-        int hourEnd = cal.get(Calendar.HOUR);
+        int hourEnd = cal.get(Calendar.HOUR_OF_DAY);
         int minEnd = cal.get(Calendar.MINUTE);
 
         timeString =  Integer.toString(hour) + "h" + Integer.toString(min) + " - " + Integer.toString(hourEnd) + "h" + Integer.toString(minEnd) + " - " +

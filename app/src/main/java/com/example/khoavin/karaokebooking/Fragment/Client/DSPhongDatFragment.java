@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.khoavin.karaokebooking.Adapter.DSPhongDaDat_Adapter;
 import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Da_Dat;
+import com.example.khoavin.karaokebooking.KaraokeObject.StaticObject;
 import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.Object_To_Json;
 import com.example.khoavin.karaokebooking.Tools.WebConnect;
@@ -26,13 +27,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Oatoal on 6/22/2016.
  */
 public class DSPhongDatFragment extends Fragment{
 
-    public static String user_name = "";
+   // public static String user_name = "";
     ListView List_ds_phong_da_dat;
     DSPhongDaDat_Adapter ds_phong_da_dat_adapter;
     WebConnect webConnect;
@@ -105,29 +108,11 @@ public class DSPhongDatFragment extends Fragment{
 
             }
         };
-        webConnect.setAction("load_dsdat", Object_To_Json.convertToJson(new parsingData(user_name)));
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("userName", StaticObject.getUserName());
+        String x = Object_To_Json.HashMapToJson(data);
+        webConnect.setAction("load_dsdat", x);
         webConnect.execute("http://192.168.1.43:80/webservice/layphongdadat.php");
         return fragmentViews;
     }
-
-    public static void setUserNameToSearch(String username){
-        user_name = username;
-    }
-
-    private class parsingData{
-        private String userName;
-
-        public String getUserName() {
-            return userName;
-        }
-
-        public void setUserName(String userName) {
-            this.userName = userName;
-        }
-
-        public parsingData(String userName){
-            this.userName = userName;
-        }
-    }
-
 }

@@ -17,18 +17,20 @@
         android:background="@drawable/text_background"
         android:layout_alignParentTop="true"
         android:paddingLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:hint="Tên đăng nhập hoặc email"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:id="@+id/txt_password"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:hint="Mật khẩu"
         android:paddingLeft="10dp"
         android:background="@drawable/text_background"
@@ -36,13 +38,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:inputType="textPassword"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:id="@+id/txt_repassword"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:hint="Nhập lại mật khẩu"
         android:paddingLeft="10dp"
         android:background="@drawable/text_background"
@@ -50,14 +55,17 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:inputType="textPassword"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:id="@+id/sp_client_type"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:paddingLeft="10dp"
         android:layout_below="@+id/txt_repassword"
         android:background="@drawable/text_background"
@@ -65,13 +73,15 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:id="@+id/editText4"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:hint="Địa điểm"
         android:paddingLeft="10dp"
         android:background="@drawable/text_background"
@@ -79,13 +89,15 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:id="@+id/sp_bussiness_type"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:paddingLeft="10dp"
         android:background="@drawable/text_background"
         android:layout_below="@+id/editText4"
@@ -93,7 +105,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -107,8 +121,10 @@
         android:layout_below="@+id/sp_bussiness_type"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/sp_bussiness_type"
-        android:layout_alignEnd="@+id/sp_bussiness_type" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <Button
         style="?android:attr/button"
@@ -117,194 +133,35 @@
         android:text="Đăng ký"
         android:id="@+id/button"
         android:background="@drawable/my_custom_background"
-        android:layout_alignTop="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignTop="@+id/btn_huydk"
+        android:layout_alignRight="@+id/sp_bussiness_type"
+        android:layout_alignEnd="@+id/sp_bussiness_type"
+        android:layout_marginRight="36dp"
+        android:layout_marginEnd="36dp" />
 
     <Button
         style="?android:attr/button"
         android:layout_width="72dp"
         android:layout_height="37dp"
         android:text="Hủy bỏ"
-        android:id="@+id/button2"
+        android:id="@+id/btn_huydk"
         android:background="@drawable/my_custom_background"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/notitext"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/txt_user_name"
+        android:layout_alignStart="@+id/txt_user_name"
+        android:layout_alignRight="@+id/txt_user_name"
+        android:layout_alignEnd="@+id/txt_user_name"
+        android:textColor="@color/background_floating_material_light" />
 
 </RelativeLayout>
-
-
-    <!--
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:background="#00ffaa"
-        tools:context=".Activity.RegisterActivity">
-
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:id="@+id/txt_user_name"
-            android:background="@drawable/text_background"
-            android:layout_alignParentTop="true"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:hint="Tên đăng nhập hoặc email" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:id="@+id/txt_password"
-            android:layout_marginTop="30dp"
-            android:hint="Mật khẩu"
-            android:paddingLeft="10dp"
-            android:background="@drawable/text_background"
-            android:layout_below="@+id/txt_user_name"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/txt_user_name"
-            android:layout_alignEnd="@+id/txt_user_name" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:id="@+id/txt_repassword"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:hint="Nhập lại mật khẩu"
-            android:paddingLeft="10dp"
-            android:background="@drawable/text_background"
-            android:layout_below="@+id/txt_password"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/txt_password"
-            android:layout_alignEnd="@+id/txt_password" />
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
-            android:src="@drawable/room_available"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:layout_alignTop="@+id/txt_user_name"
-            android:layout_toRightOf="@+id/txt_user_name"
-            android:layout_toEndOf="@+id/txt_user_name"
-            android:layout_above="@+id/txt_password" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView3"
-            android:src="@drawable/room_available"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:layout_alignBottom="@+id/txt_repassword"
-            android:layout_toRightOf="@+id/txt_repassword"
-            android:layout_toEndOf="@+id/txt_repassword"
-            android:layout_alignTop="@+id/txt_repassword" />
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:id="@+id/sp_client_type"
-            android:layout_marginTop="30dp"
-            android:paddingLeft="10dp"
-            android:layout_below="@+id/txt_repassword"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/text_background"
-            android:layout_toLeftOf="@+id/imageView3"
-            android:layout_toStartOf="@+id/imageView3"
-            android:spinnerMode="dropdown" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:id="@+id/editText4"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:hint="Địa điểm"
-            android:paddingLeft="10dp"
-            android:background="@drawable/text_background"
-            android:layout_below="@+id/sp_client_type"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/sp_client_type"
-            android:layout_alignEnd="@+id/sp_client_type" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chọn"
-            android:id="@+id/button3"
-            android:background="@drawable/my_custom_background"
-            android:layout_alignTop="@+id/editText4"
-            android:layout_toRightOf="@+id/editText4"
-            android:layout_alignBottom="@+id/editText4"
-            android:layout_alignRight="@+id/imageView3"
-            android:layout_alignEnd="@+id/imageView3" />
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:id="@+id/sp_bussiness_type"
-            android:layout_marginTop="30dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/text_background"
-            android:layout_below="@+id/editText4"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/button3"
-            android:layout_toStartOf="@+id/button3"
-            android:spinnerMode="dropdown" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:visibility="invisible"
-            android:id="@+id/txt_branch_name"
-            android:layout_height="40dp"
-            android:layout_marginTop="35dp"
-            android:hint="Tên cơ sở mới"
-            android:paddingLeft="10dp"
-            android:background="@drawable/text_background"
-            android:layout_below="@+id/sp_bussiness_type"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/sp_bussiness_type"
-            android:layout_alignEnd="@+id/sp_bussiness_type" />
-
-        <Button
-            style="?android:attr/button"
-            android:layout_width="72dp"
-            android:layout_height="37dp"
-            android:text="Đăng ký"
-            android:id="@+id/button"
-            android:background="@drawable/my_custom_background"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="49dp"
-            android:layout_marginStart="49dp" />
-
-        <Button
-            style="?android:attr/button"
-            android:layout_width="72dp"
-            android:layout_height="37dp"
-            android:text="Hủy bỏ"
-            android:id="@+id/button2"
-            android:background="@drawable/my_custom_background"
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/button3"
-            android:layout_toStartOf="@+id/button3" />
-
-    </RelativeLayout>
-
-    -->

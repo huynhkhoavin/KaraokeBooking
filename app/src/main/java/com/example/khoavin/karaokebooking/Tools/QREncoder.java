@@ -78,7 +78,12 @@ public class QREncoder {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        return(tk_id + "-" + pd_id + "-" + Integer.toString(day)  + Integer.toString(month) +  Integer.toString(year));
+        int gio = cal.get(Calendar.HOUR_OF_DAY);
+        int phut = cal.get(Calendar.MINUTE);
+        int giay = cal.get(Calendar.SECOND);
+
+        return(tk_id + "-" + pd_id + "-" + Integer.toString(day)  + Integer.toString(month) +  Integer.toString(year) + "-"
+                + Integer.toString(gio) + Integer.toString(phut) + Integer.toString(giay));
     }
 
     public static String getHeadQrCodeString(String tk_id, String pd_id, String NGAY_DAT)
@@ -97,7 +102,11 @@ public class QREncoder {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
+        int gio = cal.get(Calendar.HOUR_OF_DAY);
+        int phut = cal.get(Calendar.MINUTE);
+        int giay = cal.get(Calendar.SECOND);
 
-        return(tk_id + "-" + pd_id + "-" + Integer.toString(day)  + Integer.toString(month) +  Integer.toString(year));
+        return(tk_id + "-" + pd_id + "-" + Integer.toString(day)  + Integer.toString(month) +  Integer.toString(year) + "-"
+                + Integer.toString(gio) + Integer.toString(phut) + Integer.toString(giay));
     }
 }

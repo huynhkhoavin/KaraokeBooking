@@ -19,6 +19,7 @@ import com.example.khoavin.karaokebooking.Activity.General.MapActivity;
 import com.example.khoavin.karaokebooking.Fragment.Manager.QrScannerFragment;
 import com.example.khoavin.karaokebooking.Fragment.Client.DSPhongDatFragment;
 import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
+import com.example.khoavin.karaokebooking.Fragment.Manager.QuanLyChiNhanhFragment;
 import com.example.khoavin.karaokebooking.KaraokeObject.Phong_Dat;
 import com.example.khoavin.karaokebooking.R;
 
@@ -110,10 +111,16 @@ public class HomeManagerActivity extends AppCompatActivity
         } else if (id == R.id.nav_kara) {
            // Intent it = new Intent(HomeManagerActivity.this, KaraokeActivity.class);
            //startActivity(it);
-            DSPhongDatFragment fragment = new DSPhongDatFragment();
+            //DSPhongDatFragment fragment = new DSPhongDatFragment();
+            //fm.beginTransaction()
+                    //.replace(R.id.fl_content, fragment)
+                   // .commit();
+
+            QuanLyChiNhanhFragment fragment = new QuanLyChiNhanhFragment();
             fm.beginTransaction()
-                    .replace(R.id.fl_content, fragment)
-                    .commit();
+            .replace(R.id.fl_content, fragment)
+             .commit();
+
         } else if (id == R.id.nav_qr) {
             QrScannerFragment fragment = new QrScannerFragment();
             fm.beginTransaction()

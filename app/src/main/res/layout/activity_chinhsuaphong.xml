@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#b3f498">
+    <TextView
+        android:layout_width="290dp"
+        android:layout_height="35dp"
+        android:id="@+id/chinhsuaphong_diachi"
+        android:textSize="15dp"
+        android:textColor="#4a7cfa"
+        android:gravity="center"
+        android:layout_below="@+id/chinhsuaphong_chinhanh"
+        android:text="231 - Adolf Hiler - Đông Hòa - Dĩ An - Bình Dương"
+        android:layout_alignLeft="@+id/view"
+        android:layout_alignStart="@+id/view"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view" />
+
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="LÀNG ĐẠI HỌC"
+        android:id="@+id/chinhsuaphong_chinhanh"
+        android:textSize="20dp"
+        android:textColor="#fc1808"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="10dp" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#fa564a"
+        android:id="@+id/view"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/chinhsuaphong_diachi"
+        android:layout_alignLeft="@+id/chinhsuaphong_chinhanh"
+        android:layout_alignStart="@+id/chinhsuaphong_chinhanh" />
+
+    <EditText
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:id="@+id/chinhsuaphong_tenphong"
+        android:background="@drawable/text_background"
+        android:paddingLeft="10dp"
+        android:hint="Tên phòng"
+        android:layout_below="@+id/chinhsuaphong_noti_text"
+        android:layout_alignRight="@+id/chinhsuaphong_noti_text"
+        android:layout_alignEnd="@+id/chinhsuaphong_noti_text"
+        android:layout_alignLeft="@+id/chinhsuaphong_noti_text"
+        android:layout_alignStart="@+id/chinhsuaphong_noti_text"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:id="@+id/chinhsuaphong_giatien"
+        android:background="@drawable/text_background"
+        android:paddingLeft="10dp"
+        android:hint="Giá tiền"
+        android:layout_below="@+id/chinhsuaphong_tenphong"
+        android:layout_alignRight="@+id/chinhsuaphong_tenphong"
+        android:layout_alignEnd="@+id/chinhsuaphong_tenphong"
+        android:layout_alignLeft="@+id/chinhsuaphong_tenphong"
+        android:layout_alignStart="@+id/chinhsuaphong_tenphong"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="290dp"
+        android:layout_height="35dp"
+        android:id="@+id/chinhsuaphong_noti_text"
+        android:textSize="15dp"
+        android:textColor="#f70324"
+        android:gravity="center"
+        android:text="Đã xãy ra lỗi!, vui lòng thử lại!"
+        android:layout_below="@+id/view"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view"
+        android:layout_alignLeft="@+id/view"
+        android:layout_alignStart="@+id/view" />
+
+    <EditText
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:id="@+id/chinhsuaphong_giobatdau"
+        android:background="@drawable/text_background"
+        android:paddingLeft="10dp"
+        android:hint="Giờ bắt đầu"
+        android:layout_below="@+id/chinhsuaphong_giatien"
+        android:layout_alignRight="@+id/chinhsuaphong_giatien"
+        android:layout_alignEnd="@+id/chinhsuaphong_giatien"
+        android:layout_alignLeft="@+id/chinhsuaphong_giatien"
+        android:layout_alignStart="@+id/chinhsuaphong_giatien"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:id="@+id/chinhsuaphong_gioketthuc"
+        android:background="@drawable/text_background"
+        android:paddingLeft="10dp"
+        android:hint="Giờ kết thúc"
+        android:layout_below="@+id/chinhsuaphong_giobatdau"
+        android:layout_alignRight="@+id/chinhsuaphong_giobatdau"
+        android:layout_alignEnd="@+id/chinhsuaphong_giobatdau"
+        android:layout_alignLeft="@+id/chinhsuaphong_giobatdau"
+        android:layout_alignStart="@+id/chinhsuaphong_giobatdau"
+        android:layout_marginTop="25dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/chinhsuaphong_loaiphong"
+        android:paddingLeft="10dp"
+        android:background="@drawable/text_background"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/chinhsuaphong_trangthai"
+        android:layout_alignLeft="@+id/chinhsuaphong_trangthai"
+        android:layout_alignStart="@+id/chinhsuaphong_trangthai"
+        android:layout_alignRight="@+id/chinhsuaphong_trangthai"
+        android:layout_alignEnd="@+id/chinhsuaphong_trangthai"
+        android:layout_marginTop="25dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/chinhsuaphong_trangthai"
+        android:paddingLeft="10dp"
+        android:background="@drawable/text_background"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/chinhsuaphong_gioketthuc"
+        android:layout_alignLeft="@+id/chinhsuaphong_gioketthuc"
+        android:layout_alignStart="@+id/chinhsuaphong_gioketthuc"
+        android:layout_alignRight="@+id/chinhsuaphong_gioketthuc"
+        android:layout_alignEnd="@+id/chinhsuaphong_gioketthuc"
+        android:layout_marginTop="25dp" />
+
+        <Button
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Đồng ý"
+            android:allowUndo="true"
+            android:background="#59dbef"
+            android:id="@+id/chinhsuaphong_dongy"
+            android:layout_below="@+id/chinhsuaphong_loaiphong"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Hủy bỏ"
+            android:id="@+id/chinhsuaphong_huybo"
+            android:background="#f7a028"
+            android:layout_below="@+id/chinhsuaphong_loaiphong"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="10dp" />
+
+    <TimePicker
+        android:visibility="invisible"
+        android:id="@+id/chinhsuaphong_timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

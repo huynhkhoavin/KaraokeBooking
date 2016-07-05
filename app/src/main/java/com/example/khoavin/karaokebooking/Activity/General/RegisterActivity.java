@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.khoavin.karaokebooking.R;
@@ -26,6 +27,8 @@ public class RegisterActivity extends Activity {
     private EditText txt_Location;
     private Spinner sp_Bussiness;
     private EditText txt_branch;
+    private TextView noti_text;
+    private Button btnHuyDK;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,8 @@ public class RegisterActivity extends Activity {
         txt_Location = (EditText) findViewById(R.id.editText4);
         sp_Bussiness = (Spinner) findViewById(R.id.sp_bussiness_type);
         txt_branch = (EditText) findViewById(R.id.txt_branch_name);
+        noti_text = (TextView) findViewById(R.id.notitext);
+        btnHuyDK = (Button) findViewById(R.id.btn_huydk);
 
 
         //set visiablelity of new branch name (visible for admin account, and invisible for user account).
@@ -87,14 +92,17 @@ public class RegisterActivity extends Activity {
                             switch (s) {
                                 case "-1": {
                                     Toast.makeText(getApplicationContext(), "Tài Khoản Đã Tồn Tại!", Toast.LENGTH_LONG).show();
+                                    noti_text.setText("Tài khoản đã tồn tại!");
                                 }
                                 break;
                                 case "1": {
                                     Toast.makeText(getApplicationContext(), "Thêm Tài Khoản Thành Công!", Toast.LENGTH_LONG).show();
+                                    noti_text.setText("Thêm tài khoản thành công!");
                                 }
                                 break;
                                 case "0": {
                                     Toast.makeText(getApplicationContext(), "Đã Xãy Ra Lỗi!", Toast.LENGTH_LONG).show();
+                                    noti_text.setText("Đã xãy ra lỗi!");
                                 }
                                 break;
                                 default: {
@@ -122,6 +130,13 @@ public class RegisterActivity extends Activity {
             }
         });
 
+        btnHuyDK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
     }
 
@@ -129,11 +144,13 @@ public class RegisterActivity extends Activity {
         if(txt_Username.getText().toString().equals("") || txt_Password.getText().toString().equals(""))
         {
             Toast.makeText(getApplicationContext(), "You must enter username and password!", Toast.LENGTH_LONG).show();
+            noti_text.setText("Tên đăng nhập hoặc mật khẩu không được để trống!");
             return false;
         }
 
         if(!txt_Password.getText().toString().equals(txt_rePassword.getText().toString())){
             Toast.makeText(getApplicationContext(), "Password does not match!", Toast.LENGTH_LONG).show();
+            noti_text.setText("Mật khẩu nhập vào không trùng khớp!");
             return false;
         }
 
@@ -145,12 +162,14 @@ public class RegisterActivity extends Activity {
             else
             {
                 Toast.makeText(getApplicationContext(), "Please enter a valid Email!", Toast.LENGTH_LONG).show();
+                noti_text.setText("Địa chỉ email không chính xác!");
                 return false;
             }
         }
 
         if(txt_Username.getText().toString().contains(" ")){
             Toast.makeText(getApplicationContext(), "User name invalid!", Toast.LENGTH_LONG).show();
+            noti_text.setText("Tên đăng nhập không chính xác!");
             return false;
         }
 

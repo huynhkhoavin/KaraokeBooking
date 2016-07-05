@@ -1,5 +1,7 @@
 package com.example.khoavin.karaokebooking.Tools;
 
+import android.support.annotation.NonNull;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -192,7 +194,8 @@ public class GetHtml {
         return ch;
     }
 
-    private static String removeAccent(String s) {
+    @NonNull
+    public static String removeAccent(String s) {
         StringBuilder sb = new StringBuilder(s);
         for (int i = 0; i < sb.length(); i++) {
             sb.setCharAt(i, removeAccent(sb.charAt(i)));
