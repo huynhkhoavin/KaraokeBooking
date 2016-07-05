@@ -34,7 +34,6 @@ public class RoomStatusActivity extends ActionBarActivity implements android.sup
         viewpager = (ViewPager) findViewById(R.id.pager);
         ft = new FragmentPageAdapter(getSupportFragmentManager());
         actionbar = getSupportActionBar();
-        viewpager.setAdapter(ft);
         actionbar.setNavigationMode(android.app.ActionBar.NAVIGATION_MODE_TABS);
         mListRoom = new ArrayList<Room>();
         webConnect = new WebConnect() {
@@ -56,6 +55,8 @@ public class RoomStatusActivity extends ActionBarActivity implements android.sup
                         mListRoom.add(room);
                     }
                     System.out.println(mListRoom.size());
+                    ft.setmListRoom(mListRoom);
+                    viewpager.setAdapter(ft);
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
@@ -64,7 +65,7 @@ public class RoomStatusActivity extends ActionBarActivity implements android.sup
             }
         };
         webConnect.setAction("get_room_of_store", String.valueOf(1));
-        webConnect.execute("http://192.168.1.47:8888/webservice/book.php");
+        webConnect.execute("book.php");
 
 
         actionbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#41e65f")));

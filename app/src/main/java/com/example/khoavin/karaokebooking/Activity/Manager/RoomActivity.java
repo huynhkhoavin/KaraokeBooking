@@ -65,7 +65,7 @@ public class RoomActivity extends AppCompatActivity {
                 return 0;
             }
         };
-        readJson.execute("http://192.168.1.43:80/webservice/management.php?action=load_room&data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
+        readJson.execute("management.php?action=load_room&data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
     }
 
 }

@@ -61,7 +61,6 @@ public class QrScannerFragment extends Fragment implements ZXingScannerView.Resu
 
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
-
         btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +122,7 @@ public class QrScannerFragment extends Fragment implements ZXingScannerView.Resu
                         };
 
                         webConnect.setAction("confirm", Object_To_Json.convertToJson(new confirmdata(QR_STRING)));
-                        webConnect.execute("http://192.168.1.43:80/webservice/confirm.php");
+                        webConnect.execute("confirm.php");
                         btnXacNhan.setText("Continue");
                     }
                     else{

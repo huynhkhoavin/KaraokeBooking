@@ -40,7 +40,7 @@ public class ManagerFragment extends Fragment {
                     public int doSomeThing(String x) {
                         return 0;
                     }
-                }.execute("http://192.168.1.43:80/webservice/management.php?action=load_room&data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
+                }.execute("management.php?action=load_room&data=" + Object_To_Json.convertToJson(new account("khoavin@gmail.com", "123456")));
             }
         });
         return fragmentViews;

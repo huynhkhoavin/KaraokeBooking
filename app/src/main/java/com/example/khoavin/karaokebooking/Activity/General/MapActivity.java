@@ -107,8 +107,10 @@ public class MapActivity extends FragmentActivity implements GoogleApiClient.Con
         SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
         // Getting Map for the SupportMapFragment
+        if(map==null) {
+            return;
+        }
         map = fm.getMap();
-
         map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 
             @Override
@@ -497,6 +499,7 @@ public class MapActivity extends FragmentActivity implements GoogleApiClient.Con
             Log.v("Google API Callback", "Connection Done");
         } catch (Exception e){
             Toast.makeText(this.getApplicationContext(),"Không nhật được vị trí cuối cùng!", Toast.LENGTH_LONG).show();
+            if(map!=null)
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(16.416686, 107.623261), 5));
         }
     }

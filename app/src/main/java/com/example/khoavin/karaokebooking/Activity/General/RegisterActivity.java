@@ -124,7 +124,7 @@ public class RegisterActivity extends Activity {
 
                     postRequest.setAction("register", Object_To_Json.convertToJson(new RegisterInfo(txt_Username.getText().toString(), txt_Password.getText().toString(),
                             sp_Client.getSelectedItem().toString() == "Người Quản Trị" ? 4 : 3)));
-                    postRequest.execute("http://192.168.1.43:80/webservice/register.php");
+                    postRequest.execute("register.php");
 
                 }
             }

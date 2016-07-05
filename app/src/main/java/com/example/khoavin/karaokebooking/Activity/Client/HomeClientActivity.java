@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.khoavin.karaokebooking.Activity.General.LoginActivity;
+import com.example.khoavin.karaokebooking.Fragment.Client.DSPhongDatFragment;
 import com.example.khoavin.karaokebooking.Fragment.Client.StoreListFragment;
 import com.example.khoavin.karaokebooking.Fragment.ToolFragment.DatePickerFragment;
 import com.example.khoavin.karaokebooking.R;
@@ -18,6 +20,7 @@ import com.example.khoavin.karaokebooking.R;
 public class HomeClientActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     StoreListFragment storeListFragment = new StoreListFragment();
+    DSPhongDatFragment dsPhongDatFragment = new DSPhongDatFragment();
     android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class HomeClientActivity extends AppCompatActivity
         setContentView(R.layout.activity_home_client);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        System.out.println("User Info"+LoginActivity.getLoginAccount().getUserid());
 
         //-------------------
         fm.beginTransaction()
@@ -77,6 +80,9 @@ public class HomeClientActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
 // Start the animated transition.
         } else if (id == R.id.nav_gallery) {
+            fm.beginTransaction()
+                    .replace(R.id.fl_content, dsPhongDatFragment)
+                    .commit();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -91,7 +97,6 @@ public class HomeClientActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 //    public void showDatePickerDialog(View view) {
 //        DialogFragment newFragment = new DatePickerFragment();
 //        newFragment.show(getSupportFragmentManager(), "datePicker");
