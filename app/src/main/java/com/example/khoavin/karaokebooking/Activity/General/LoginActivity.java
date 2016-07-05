@@ -13,6 +13,7 @@ import com.example.khoavin.karaokebooking.Activity.Client.HomeClientActivity;
 import com.example.khoavin.karaokebooking.Activity.Manager.HomeManagerActivity;
 import com.example.khoavin.karaokebooking.Fragment.Client.DSPhongDatFragment;
 import com.example.khoavin.karaokebooking.Fragment.Manager.ManagerFragment;
+import com.example.khoavin.karaokebooking.KaraokeObject.StaticObject;
 import com.example.khoavin.karaokebooking.KaraokeObject.account;
 import com.example.khoavin.karaokebooking.R;
 import com.example.khoavin.karaokebooking.Tools.Object_To_Json;
@@ -72,6 +73,7 @@ public class LoginActivity extends Activity {
                             break;
                             case 1:
                             {
+                                StaticObject.setUserName(txt_Username.getText().toString());
                                 Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
                                 Intent it = new Intent(LoginActivity.this,HomeClientActivity.class);
                                 startActivity(it);
@@ -79,12 +81,14 @@ public class LoginActivity extends Activity {
                             break;
                             case 3: //Admin authority
                             {
+                                StaticObject.setUserName(txt_Username.getText().toString());
                                 Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công Với Quyền Quản Trị!",Toast.LENGTH_LONG).show();
                                 Intent it = new Intent(LoginActivity.this,HomeManagerActivity.class);
                                 startActivity(it);
                             }break;
                             case 4:
                             {
+                                StaticObject.setUserName(txt_Username.getText().toString());
                                 Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công!",Toast.LENGTH_LONG).show();
                                 Intent it = new Intent(LoginActivity.this,HomeClientActivity.class);
                                 startActivity(it);
